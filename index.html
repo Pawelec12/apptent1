@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apptent — Agentic AI Customer Support</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.25), transparent 45%), #030712;
+      color: #e2e8f0;
+    }
+    .glass-panel {
+      background: rgba(12, 18, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      backdrop-filter: blur(18px);
+      border-radius: 24px;
+    }
+    .pulse-ring {
+      animation: pulse 9s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); }
+      50% { box-shadow: 0 0 65px rgba(59, 130, 246, 0.7); }
+    }
+    .floaty {
+      animation: floaty 8s ease-in-out infinite;
+    }
+    @keyframes floaty {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-18px); }
+      100% { transform: translateY(0px); }
+    }
+    .gradient-blob {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.35), transparent 60%);
+      filter: blur(20px);
+      z-index: -1;
+    }
+    .language-pill {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      background: rgba(15, 23, 42, 0.7);
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+    .language-pill.active {
+      background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+      color: #fff;
+      border-color: transparent;
+    }
+    @media (max-width: 768px) {
+      .language-switch {
+        margin-top: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+  <div class="gradient-blob -top-16 -right-8"></div>
+  <div class="gradient-blob bottom-10 left-4 bg-gradient-to-br from-fuchsia-500/40 to-purple-500/20"></div>
+  <header class="relative z-10 max-w-6xl mx-auto px-6 py-8">
+    <nav class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-sky-500 flex items-center justify-center font-semibold tracking-wide text-lg shadow-lg">
+          Ap
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Apptent</p>
+          <p class="text-lg font-semibold text-white">APPTENT</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-6 text-sm text-slate-300">
+        <button class="language-pill active" data-lang="en">EN</button>
+        <button class="language-pill" data-lang="pl">PL</button>
+      </div>
+      <div class="hidden lg:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#overview" class="hover:text-white transition" data-key="navOverview">Overview</a>
+        <a href="#personalization" class="hover:text-white transition" data-key="navPersonalization">Personalization</a>
+        <a href="#analysis" class="hover:text-white transition" data-key="navAnalysis">Recording Analysis</a>
+        <a href="#banking" class="hover:text-white transition" data-key="navBanking">Banking Setup</a>
+        <a href="#contact" class="bg-gradient-to-r from-cyan-400 to-sky-500 text-white px-5 py-2 rounded-full font-semibold shadow-lg" data-key="navContact">Contact</a>
+      </div>
+      <button class="lg:hidden text-xs uppercase tracking-[0.4em] text-white bg-gradient-to-r from-slate-900/70 to-slate-900/50 px-4 py-2 rounded-full border border-slate-600">Menu</button>
+    </nav>
+    <section id="overview" class="mt-12 grid lg:grid-cols-2 gap-10 items-center">
+      <div class="space-y-6">
+        <p class="text-xs uppercase tracking-[0.4em] text-sky-300" data-key="heroTagline">Agentic AI Support</p>
+        <h1 class="text-4xl md:text-5xl font-semibold leading-tight text-white" data-key="heroTitle">
+          Apptent orchestrates empathetic, autonomous experiences that sound like your best human agent.
+        </h1>
+        <p class="text-slate-300 text-lg max-w-2xl" data-key="heroDesc">
+          We blend personalization, intent-aware analytics, and bank-grade compliance to turn every customer conversation into a confident outcome.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://calendly.com/apptent/30min" target="_blank">
+  <button class="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-2xl hover:tracking-wide transition" data-key="primaryCta">
+    Start a Live Demo
+  </button>
+</a>
+
+          <button class="border border-slate-600 text-slate-200 px-6 py-3 rounded-full hover:border-white transition" data-key="secondaryCta">View Personalization Flow</button>
+        </div>
+        <div class="grid grid-cols-3 gap-6 text-center">
+          <div>
+            
+          </div>
+          <div>
+          
+          </div>
+          <div>
+           
+          </div>
+        </div>
+      </div>
+      <div class="glass-panel p-8 shadow-2xl relative overflow-hidden border border-white/10">
+        <div class="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-gradient-to-br from-cyan-400/50 to-sky-500/40 blur-3xl pulse-ring"></div>
+        <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Tone Console</p>
+        <h2 class="text-2xl text-white font-semibold mt-4" data-key="toneConsoleTitle">Personalization control</h2>
+        <p class="text-slate-300 text-sm mt-2" data-key="toneConsoleDesc">
+          Slide to adjust empathy and precision so Apptent maintains your brand cadence.
+        </p>
+        <div class="mt-6 bg-slate-900/70 p-5 rounded-2xl border border-white/5">
+          <div class="flex justify-between text-xs uppercase tracking-[0.4em] text-slate-400">
+            <span data-key="toneLabelTitle">Adaptability</span>
+            <span id="toneLabel" class="text-white font-semibold">Balanced</span>
+          </div>
+          <input id="toneSlider" type="range" min="0" max="100" value="50" class="w-full mt-4 accent-sky-400" />
+          <p id="toneDescription" class="text-slate-300 text-sm mt-4">
+            Blend warmth with clarity for consistent experiences.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 mt-7">
+          <div class="w-12 h-12 rounded-2xl border border-slate-700 flex items-center justify-center bg-slate-900/60">
+            <span class="text-xs uppercase tracking-[0.3em] text-cyan-300">AI</span>
+          </div>
+          <div>
+            <p class="text-white font-semibold text-sm" data-key="toneFooterTitle">Directive intelligence</p>
+            <p class="text-slate-400 text-xs" data-key="toneFooterDesc">
+              Apptent cues contextual reminders before every send.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+  <main class="relative z-10 max-w-6xl mx-auto px-6 pb-16 space-y-20">
+    <section id="personalization" class="space-y-8">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.4em] text-sky-400" data-key="personalizationTagline">Personalization Force</p>
+          <h3 class="text-3xl font-semibold text-white" data-key="personalizationTitle">Tailor every message</h3>
+          <p class="text-slate-300 max-w-3xl" data-key="personalizationDesc">
+            Tune tone, inject brand phrases, and preview how Apptent delivers each reply with clarity.
+          </p>
+        </div>
+        <button class="self-start bg-white text-slate-900 font-semibold px-5 py-3 rounded-full shadow-xl hover:scale-105 transition" data-key="personalizationCta">Customize communication</button>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-3">
+        <div class="glass-panel p-6 border border-white/10 shadow-2xl transition-transform duration-300 hover:-translate-y-2">
+          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="personalizationCard1Title">Guided Style Library</p>
+          <h4 class="text-2xl font-semibold text-white mt-4" data-key="personalizationCard1Title">Guided Style Library</h4>
+          <p class="text-slate-300 text-sm mt-3" data-key="personalizationCard1Desc">
+            Preset and custom tones ensure consistency across channels while letting your brand voice resonate.
+          </p>
+          <div class="flex flex-wrap gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-slate-400 mt-6">
+            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard1Tag1">Secure</span>
+            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard1Tag2">Consistent</span>
+          </div>
+        </div>
+        <div class="glass-panel p-6 border border-white/10 shadow-2xl transition-transform duration-300 hover:-translate-y-2">
+          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="personalizationCard2Title">Adaptive Prompts</p>
+          <h4 class="text-2xl font-semibold text-white mt-4" data-key="personalizationCard2Title">Adaptive Prompts</h4>
+          <p class="text-slate-300 text-sm mt-3" data-key="personalizationCard2Desc">
+            AI cues remind reps about context, sentiment, and compliance before any send.
+          </p>
+          <div class="flex flex-wrap gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-slate-400 mt-6">
+            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard2Tag1">Real-time</span>
+            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard2Tag2">Insightful</span>
+          </div>
+        </div>
+        <div class="glass-panel p-6 border border-white/10 shadow-2xl transition-transform duration-300 hover:-translate-y-2">
+          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="personalizationCard3Title">Persona Memory</p>
+          <h4 class="text-2xl font-semibold text-white mt-4" data-key="personalizationCard3Title">Persona Memory</h4>
+          <p class="text-slate-300 text-sm mt-3" data-key="personalizationCard3Desc">
+            Accounts, preferences, and contact history shape responses that feel personal.
+          </p>
+          <div class="flex flex-wrap gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-slate-400 mt-6">
+            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard3Tag1">Personalized</span>
+            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard3Tag2">Trusted</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="analysis" class="grid gap-8 lg:grid-cols-2">
+      <div class="glass-panel p-8 relative overflow-hidden border border-white/10 shadow-2xl">
+        <div class="absolute -top-10 right-8 w-24 h-24 rounded-full bg-gradient-to-br from-purple-500/50 to-blue-500/40 blur-3xl floaty"></div>
+        <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="analysisTagline">Recording Intelligence</p>
+        <h3 class="text-3xl font-semibold text-white mt-4" data-key="analysisTitle">Recording intelligence</h3>
+        <p class="text-slate-300 mt-4" data-key="analysisDesc">
+          Automatic transcripts, emotion tagging, and intent mapping feed back into every future exchange.
+        </p>
+        <div class="mt-8 space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl border border-slate-600 flex items-center justify-center text-sky-300 font-semibold">01</div>
+            <div>
+              <p class="text-white font-semibold" data-key="analysisList1Title">Intent Mapping</p>
+              <p class="text-slate-400 text-sm" data-key="analysisList1Desc">
+                Segments conversations by goals so actions stay relevant.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl border border-slate-600 flex items-center justify-center text-sky-300 font-semibold">02</div>
+            <div>
+              <p class="text-white font-semibold" data-key="analysisList2Title">Emotion Signals</p>
+              <p class="text-slate-400 text-sm" data-key="analysisList2Desc">
+                Detects tones to coach responses and route to expert agents.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl border border-slate-600 flex items-center justify-center text-sky-300 font-semibold">03</div>
+            <div>
+              <p class="text-white font-semibold" data-key="analysisList3Title">Adaptive Coaching</p>
+              <p class="text-slate-400 text-sm" data-key="analysisList3Desc">
+                Summaries highlight opportunities, risks, and follow-ups.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="glass-panel p-8 border border-white/10 shadow-2xl">
+        <p class="text-xs uppercase tracking-[0.5em] text-slate-400" data-key="analysisDashboardTitle">Insight Dashboard</p>
+        <h3 class="text-3xl font-semibold text-white mt-4" data-key="dashboardHeading">Insight Dashboard</h3>
+        <div class="mt-6 rounded-3xl bg-slate-900/60 border border-white/10 p-6 space-y-6">
+          <div>
+            <div class="flex items-center justify-between text-sm text-slate-400">
+              <span data-key="dashboardLabel1">Agent Confidence</span>
+              <span class="text-white font-semibold text-lg" data-key="dashboardValue1">92%</span>
+            </div>
+            <div class="mt-2 h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="width: 92%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between text-sm text-slate-400">
+              <span data-key="dashboardLabel2">Avg. Response Time</span>
+              <span class="text-white font-semibold text-lg" data-key="dashboardValue2">12s</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between text-sm text-slate-400">
+              <span data-key="dashboardLabel3">Compliance Flags</span>
+              <span class="text-emerald-400 font-semibold text-lg" data-key="dashboardValue3">0.8%</span>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm" data-key="dashboardDesc">
+            Connect insights to CRM, contact center, and compliance tiers.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="banking" class="space-y-8">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-[0.4em] text-sky-400" data-key="bankTagline">Banking Flow</p>
+          <h3 class="text-3xl font-semibold text-white" data-key="bankTitle">Bank account journeys simplified</h3>
+          <p class="text-slate-300 max-w-3xl" data-key="bankDesc">
+            Apptent orchestrates identity checks, document assistance, and live support when opening a new account.
+          </p>
+        </div>
+        <a href="#contact" class="inline-flex items-center justify-center bg-emerald-400 text-slate-900 px-5 py-3 rounded-full font-semibold shadow-xl hover:bg-emerald-300 transition" data-key="bankPrimaryCta">See banking flow</a>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="glass-panel p-6 border border-white/10 shadow-2xl">
+          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="bankStep1Title">Step 01</p>
+          <h4 class="text-2xl font-semibold text-white mt-3" data-key="bankStep1Headline">Establish the relationship</h4>
+          <p class="text-slate-300 text-sm mt-2" data-key="bankStep1Desc">
+            Warm greetings, disclosures, and identity verification happen smoothly.
+          </p>
+          <div class="text-slate-500 text-xs mt-4" data-key="bankStep1Foot">Checks: KYC onboarding, AML mapping</div>
+        </div>
+        <div class="glass-panel p-6 border border-white/10 shadow-2xl">
+          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="bankStep2Title">Step 02</p>
+          <h4 class="text-2xl font-semibold text-white mt-3" data-key="bankStep2Headline">Guide document submission</h4>
+          <p class="text-slate-300 text-sm mt-2" data-key="bankStep2Desc">
+            Smart prompts explain requirements, languages, and uploads.
+          </p>
+          <div class="text-slate-500 text-xs mt-4" data-key="bankStep2Foot">Includes multi-lingual clarifications</div>
+        </div>
+        <div class="glass-panel p-6 border border-white/10 shadow-2xl">
+          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="bankStep3Title">Step 03</p>
+          <h4 class="text-2xl font-semibold text-white mt-3" data-key="bankStep3Headline">Confirm and empower</h4>
+          <p class="text-slate-300 text-sm mt-2" data-key="bankStep3Desc">
+            Next steps, alerts, and proactive follow-ups ensure satisfaction.
+          </p>
+          <div class="text-slate-500 text-xs mt-4" data-key="bankStep3Foot">Post onboarding follow-ups automated</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="contact" class="relative z-10 max-w-6xl mx-auto px-6 pb-16">
+    <div class="glass-panel border border-white/10 shadow-2xl p-10 relative overflow-hidden">
+      <div class="absolute -bottom-10 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-pink-500/50 to-purple-500/40 blur-3xl opacity-70"></div>
+      <div class="relative z-10 grid gap-10 md:grid-cols-2">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.4em] text-sky-300" data-key="contactTagline">Connect</p>
+          <h3 class="text-3xl font-semibold text-white" data-key="contactTitle">Ready to scale empathetic support?</h3>
+          <p class="text-slate-300 text-sm max-w-xl" data-key="contactDesc">
+            Book a walkthrough or pilot to see Apptent integrate with your support stack.
+          </p>
+        </div>
+        <div class="bg-slate-900/70 border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
+          <label class="text-[0.6rem] uppercase tracking-[0.3em] text-slate-400" data-key="contactLabelEmail">Email</label>
+          <input type="email" class="w-full bg-transparent border border-slate-700 rounded-2xl px-4 py-3 text-white focus:border-cyan-400 outline-none" placeholder="you@company.com" data-placeholder-key="contactPlaceholder" />
+          <label class="text-[0.6rem] uppercase tracking-[0.3em] text-slate-400 block" data-key="contactLabelNeed">Need</label>
+          <select class="w-full bg-transparent border border-slate-700 rounded-2xl px-4 py-3 text-white focus:border-cyan-400 outline-none">
+            <option data-option-key="contactOption1">Live demo</option>
+            <option data-option-key="contactOption2">Pilot onboarding</option>
+            <option data-option-key="contactOption3">Consultation</option>
+          </select>
+          <a href="https://calendly.com/apptent/30min" target="_blank">
+  <button class="w-full bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-3 rounded-2xl font-semibold text-white hover:scale-105 transition" data-key="contactButton">
+    Schedule a call
+  </button>
+</a>
+
+        </div>
+      </div>
+      <p class="text-[0.65rem] uppercase tracking-[0.3em] text-slate-500 text-center mt-8" data-key="footerNote">© 2025 Apptent. Built for ambitious support leaders.</p>
+    </div>
+  </footer>
+  <script>
+    const translations = {
+      en: {
+        navOverview: "Overview",
+        navPersonalization: "Personalization",
+        navAnalysis: "Recording Analysis",
+        navBanking: "Banking Setup",
+        navContact: "Contact",
+        heroTagline: "Agentic AI Support",
+        heroTitle: "Apptent orchestrates empathetic, autonomous experiences that sound like your best human agent.",
+        heroDesc: "We blend personalization, intent-aware analytics, and bank-grade compliance to turn every customer conversation into a confident outcome.",
+        primaryCta: "Start a Live Demo",
+        secondaryCta: "View Personalization Flow",
+        stat1Value: "18k",
+        stat1Label: "Minutes interpreted monthly",
+        stat2Value: "96%",
+        stat2Label: "Customer satisfaction rate",
+        stat3Value: "264",
+        stat3Label: "New accounts guided",
+        toneConsoleTitle: "Personalization control",
+        toneConsoleDesc: "Slide to adjust empathy and precision so Apptent maintains your brand cadence.",
+        toneLabelTitle: "Adaptability",
+        toneFooterTitle: "Directive intelligence",
+        toneFooterDesc: "Apptent cues contextual reminders before every send.",
+        personalizationTagline: "Personalization Force",
+        personalizationTitle: "Tailor every message",
+        personalizationDesc: "Tune tone, inject brand phrases, and preview how Apptent delivers each reply with clarity.",
+        personalizationCta: "Customize communication",
+        personalizationCard1Title: "Guided Style Library",
+        personalizationCard1Desc: "Preset and custom tones ensure consistency across channels while letting your brand voice resonate.",
+        personalizationCard1Tag1: "Secure",
+        personalizationCard1Tag2: "Consistent",
+        personalizationCard2Title: "Adaptive Prompts",
+        personalizationCard2Desc: "AI cues remind reps about context, sentiment, and compliance before any send.",
+        personalizationCard2Tag1: "Real-time",
+        personalizationCard2Tag2: "Insightful",
+        personalizationCard3Title: "Multilingual",
+        personalizationCard3Desc: "Answers questions in 20+ languages.",
+        personalizationCard3Tag1: "Personalized",
+        personalizationCard3Tag2: "Trusted",
+        analysisTagline: "Recording Intelligence",
+        analysisTitle: "Recording intelligence",
+        analysisDesc: "Automatic transcripts, emotion tagging, and intent mapping feed back into every future exchange.",
+        analysisList1Title: "Intent Mapping",
+        analysisList1Desc: "Segments conversations by goals so actions stay relevant.",
+        analysisList2Title: "Emotion Signals",
+        analysisList2Desc: "Detects tones to coach responses and route to expert agents.",
+        analysisList3Title: "Adaptive Coaching",
+        analysisList3Desc: "Summaries highlight opportunities, risks, and follow-ups.",
+        analysisDashboardTitle: "Insight Dashboard",
+        dashboardHeading: "Insight Dashboard",
+        dashboardLabel1: "Agent Confidence",
+        dashboardValue1: "92%",
+        dashboardLabel2: "Avg. Response Time",
+        dashboardValue2: "1,6s",
+        dashboardLabel3: "Compliance Flags",
+        dashboardValue3: "0.8%",
+        dashboardDesc: "Connect insights to CRM, contact center, and compliance tiers.",
+        bankTagline: "Banking Flow",
+        bankTitle: "Bank account journeys simplified",
+        bankDesc: "Apptent orchestrates identity checks, document assistance, and live support when opening a new account.",
+        bankPrimaryCta: "See banking flow",
+        bankStep1Title: "Step 01",
+        bankStep1Headline: "Establish the relationship",
+        bankStep1Desc: "Warm greetings, disclosures, and identity verification happen smoothly.",
+        bankStep1Foot: "Checks: KYC onboarding, AML mapping",
+        bankStep2Title: "Step 02",
+        bankStep2Headline: "Guide document submission",
+        bankStep2Desc: "Smart prompts explain requirements, languages, and uploads.",
+        bankStep2Foot: "Includes multi-lingual clarifications",
+        bankStep3Title: "Step 03",
+        bankStep3Headline: "Confirm and empower",
+        bankStep3Desc: "Next steps, alerts, and proactive follow-ups ensure satisfaction.",
+        bankStep3Foot: "Post onboarding follow-ups automated",
+        contactTagline: "Connect",
+        contactTitle: "Ready to scale empathetic support?",
+        contactDesc: "Book a walkthrough or pilot to see Apptent integrate with your support stack.",
+        contactLabelEmail: "Email",
+        contactPlaceholder: "you@company.com",
+        contactLabelNeed: "Need",
+        contactOption1: "Live demo",
+        contactOption2: "Pilot onboarding",
+        contactOption3: "Consultation",
+        contactButton: "Schedule a call",
+        footerNote: "© 2025 Apptent. Built for ambitious support leaders."
+      },
+      pl: {
+        navOverview: "Przegląd",
+        navPersonalization: "Personalizacja",
+        navAnalysis: "Analiza nagrań",
+        navBanking: "Obsługa bankowa",
+        navContact: "Kontakt",
+        heroTagline: "Wsparcie Agentic AI",
+        heroTitle: "Apptent harmonizuje empatyczne, autonomiczne doświadczenia, które brzmią jak najlepszy agent.",
+        heroDesc: "Łączymy personalizację, analizę intencji i zgodność z bankowymi standardami, aby każda rozmowa kończyła się zaufaniem.",
+        primaryCta: "Rozpocznij demo na żywo",
+        secondaryCta: "Zobacz personalizację",
+        stat1Value: "18k",
+        stat1Label: "Przeanalizowanych minut miesięcznie",
+        stat2Value: "96%",
+        stat2Label: "Wskaźnik zadowolenia klientów",
+        stat3Value: "264",
+        stat3Label: "Obsłużonych kont",
+        toneConsoleTitle: "Kontrola personalizacji",
+        toneConsoleDesc: "Przesuń, aby dopasować empatię i precyzję, utrzymując cadence marki.",
+        toneLabelTitle: "Adaptacyjność",
+        toneFooterTitle: "Inteligencja dyrektywna",
+        toneFooterDesc: "Apptent przypomina o kontekście przed każdą wysyłką.",
+        personalizationTagline: "Moc personalizacji",
+        personalizationTitle: "Dopasuj każdą wiadomość",
+        personalizationDesc: "Reguluj ton, dodawaj brandowe zwroty i sprawdzaj, jak Apptent odpowiada z jasnością.",
+        personalizationCta: "Dostosuj komunikację",
+        personalizationCard1Title: "Biblioteka stylów",
+        personalizationCard1Desc: "Gotowe i indywidualne tony zachowują spójność, a głos marki pozostaje autentyczny.",
+        personalizationCard1Tag1: "Bezpieczne",
+        personalizationCard1Tag2: "Spójne",
+        personalizationCard2Title: "Adaptacyjne podpowiedzi",
+        personalizationCard2Desc: "AI przypomina o kontekście, nastroju i wymaganiach regulacyjnych przed wysłaniem wiadomości.",
+        personalizationCard2Tag1: "W czasie rzeczywistym",
+        personalizationCard2Tag2: "Pogłębiające",
+        personalizationCard3Title: "Agent wielojęzykowy",
+        personalizationCard3Desc: "Obsługuje klientów w ponad 20 językach.",
+        personalizationCard3Tag1: "Spersonalizowane",
+        personalizationCard3Tag2: "Godne zaufania",
+        analysisTagline: "Inteligencja nagrań",
+        analysisTitle: "Inteligencja nagrań",
+        analysisDesc: "Automatyczne transkrypcje, oznaczanie emocji i mapowanie intencji wzmacniają przyszłe rozmowy.",
+        analysisList1Title: "Mapowanie intencji",
+        analysisList1Desc: "Klasyfikuje cele rozmów, by działania były trafne.",
+        analysisList2Title: "Sygnały emocji",
+        analysisList2Desc: "Wykrywa nastrój, by szkolić odpowiedzi i kierować do ekspertów.",
+        analysisList3Title: "Adaptacyjne wsparcie",
+        analysisList3Desc: "Podsumowania pokazują szanse, ryzyka i dalsze kroki.",
+        analysisDashboardTitle: "Panel wglądu",
+        dashboardHeading: "Panel wglądu",
+        dashboardLabel1: "Pewność agenta",
+        dashboardValue1: "92%",
+        dashboardLabel2: "Śr. czas odpowiedzi",
+        dashboardValue2: "1,6s",
+        dashboardLabel3: "Flagi zgodności",
+        dashboardValue3: "0,8%",
+        dashboardDesc: "Połącz dane z CRM, centrum kontaktowym i zespołem zgodności.",
+        bankTagline: "Przepływ bankowy",
+        bankTitle: "Uproszczone procesy otwarcia konta",
+        bankDesc: "Apptent koordynuje weryfikację, pomoc przy dokumentach i wsparcie na żywo w procesie zakładania konta.",
+        bankPrimaryCta: "Zobacz przepływ bankowy",
+        bankStep1Title: "Krok 01",
+        bankStep1Headline: "Nawiąż relację",
+        bankStep1Desc: "Powitania, ujawnienia i weryfikacja tożsamości przeprowadzane płynnie.",
+        bankStep1Foot: "Kontrole: onboarding KYC, mapowanie AML",
+        bankStep2Title: "Krok 02",
+        bankStep2Headline: "Poprowadź dokumenty",
+        bankStep2Desc: "Podpowiedzi tłumaczą wymagania, języki i przesyłanie plików.",
+        bankStep2Foot: "Obejmuje wielojęzyczne wyjaśnienia",
+        bankStep3Title: "Krok 03",
+        bankStep3Headline: "Potwierdź i wzmocnij",
+        bankStep3Desc: "Kolejne kroki, alerty i proaktywna opieka budują satysfakcję.",
+        bankStep3Foot: "Automatyzacja follow-upów po onboardingu",
+        contactTagline: "Połącz się",
+        contactTitle: "Gotowy na skalowanie empatycznego wsparcia?",
+        contactDesc: "Umów prezentację lub pilotaż, aby zobaczyć, jak Apptent integruje się z Twoim zespołem.",
+        contactLabelEmail: "Email",
+        contactPlaceholder: "ty@firma.pl",
+        contactLabelNeed: "Potrzeba",
+        contactOption1: "Demo na żywo",
+        contactOption2: "Pilotaż wdrożeniowy",
+        contactOption3: "Konsultacja",
+        contactButton: "Umów rozmowę",
+        footerNote: "© 2025 Apptent. Stworzone dla liderów wsparcia."
+      }
+    };
+    const toneMapping = {
+      en: [
+        { label: "Empathetic", description: "Soften language to comfort customers during delicate issues." },
+        { label: "Balanced", description: "Blend warmth with clarity for consistent experiences." },
+        { label: "Precise", description: "Sharpen directives for efficient banking workflows." }
+      ],
+      pl: [
+        { label: "Empatyczny", description: "Zmiękcz język, by uspokoić klientów w delikatnych sprawach." },
+        { label: "Zrównoważony", description: "Łączy ciepło z przejrzystością dla spójności." },
+        { label: "Precyzyjny", description: "Wyostrza instrukcje dla efektywnych procedur bankowych." }
+      ]
+    };
+    let currentLanguage = 'en';
+    const translationElements = document.querySelectorAll('[data-key]');
+    const placeholderElements = document.querySelectorAll('[data-placeholder-key]');
+    const optionElements = document.querySelectorAll('[data-option-key]');
+    const languageButtons = document.querySelectorAll('.language-pill');
+    const toneLabel = document.getElementById('toneLabel');
+    const toneDescription = document.getElementById('toneDescription');
+    const toneSlider = document.getElementById('toneSlider');
+    function applyLanguage(lang) {
+      translationElements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      placeholderElements.forEach(el => {
+        const key = el.getAttribute('data-placeholder-key');
+        if (translations[lang][key]) {
+          el.placeholder = translations[lang][key];
+        }
+      });
+      optionElements.forEach(el => {
+        const key = el.getAttribute('data-option-key');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      updateToneText(lang, toneSlider.value);
+      languageButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      currentLanguage = lang;
+    }
+    function updateToneText(lang, value) {
+      const numeric = Number(value);
+      let idx = 1;
+      if (numeric < 35) idx = 0;
+      else if (numeric > 65) idx = 2;
+      const text = toneMapping[lang][idx];
+      toneLabel.textContent = text.label;
+      toneDescription.textContent = text.description;
+    }
+    toneSlider.addEventListener('input', (e) => {
+      updateToneText(currentLanguage, e.target.value);
+    });
+    languageButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetLang = button.getAttribute('data-lang');
+        if (targetLang !== currentLanguage) {
+          applyLanguage(targetLang);
+        }
+      });
+    });
+    window.addEventListener('DOMContentLoaded', () => {
+      applyLanguage('en');
+    });
+  </script>
+</body>
+</html>
