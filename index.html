@@ -1,583 +1,1755 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apptent — Agentic AI Customer Support</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      color-scheme: dark;
-    }
-    body {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.25), transparent 45%), #030712;
-      color: #e2e8f0;
-    }
-    .glass-panel {
-      background: rgba(12, 18, 42, 0.75);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      backdrop-filter: blur(18px);
-      border-radius: 24px;
-    }
-    .pulse-ring {
-      animation: pulse 9s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); }
-      50% { box-shadow: 0 0 65px rgba(59, 130, 246, 0.7); }
-    }
-    .floaty {
-      animation: floaty 8s ease-in-out infinite;
-    }
-    @keyframes floaty {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-18px); }
-      100% { transform: translateY(0px); }
-    }
-    .gradient-blob {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.35), transparent 60%);
-      filter: blur(20px);
-      z-index: -1;
-    }
-    .language-pill {
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 999px;
-      padding: 0.35rem 0.8rem;
-      background: rgba(15, 23, 42, 0.7);
-      cursor: pointer;
-      font-size: 0.8rem;
-      transition: all 0.3s ease;
-    }
-    .language-pill.active {
-      background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
-      color: #fff;
-      border-color: transparent;
-    }
-    @media (max-width: 768px) {
-      .language-switch {
-        margin-top: 0.75rem;
-      }
-    }
-  </style>
-</head>
-<body class="min-h-screen relative overflow-x-hidden">
-  <div class="gradient-blob -top-16 -right-8"></div>
-  <div class="gradient-blob bottom-10 left-4 bg-gradient-to-br from-fuchsia-500/40 to-purple-500/20"></div>
-  <header class="relative z-10 max-w-6xl mx-auto px-6 py-8">
-    <nav class="flex flex-wrap items-center justify-between gap-4">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-12 h-12 rounded-2xl overflow-hidden shadow-lg border border-cyan-400/20 bg-slate-900/50 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-           <img src="logo-apptent.png" alt="Apptent Logo" class="w-full h-full object-cover">
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-[0.4em] text-slate-400 transition-colors group-hover:text-cyan-400">Apptent</p>
-          <p class="text-lg font-semibold text-white">APPTENT</p>
-        </div>
-      </a>
-      <div class="flex flex-wrap items-center gap-6 text-sm text-slate-300">
-        <button class="language-pill active" data-lang="en">EN</button>
-        <button class="language-pill" data-lang="pl">PL</button>
-      </div>
-      <div class="hidden lg:flex items-center gap-6 text-sm text-slate-300">
-        <a href="#overview" class="hover:text-white transition" data-key="navOverview">Overview</a>
-        <a href="#personalization" class="hover:text-white transition" data-key="navPersonalization">Personalization</a>
-        <a href="#analysis" class="hover:text-white transition" data-key="navAnalysis">Recording Analysis</a>
-        <a href="#banking" class="hover:text-white transition" data-key="navBanking">Banking Setup</a>
-        <a href="#contact" class="bg-gradient-to-r from-cyan-400 to-sky-500 text-white px-5 py-2 rounded-full font-semibold shadow-lg" data-key="navContact">Contact</a>
-      </div>
-      <button class="lg:hidden text-xs uppercase tracking-[0.4em] text-white bg-gradient-to-r from-slate-900/70 to-slate-900/50 px-4 py-2 rounded-full border border-slate-600">Menu</button>
-    </nav>
-    <section id="overview" class="mt-12 grid lg:grid-cols-2 gap-10 items-center">
-      <div class="space-y-6">
-        <p class="text-xs uppercase tracking-[0.4em] text-sky-300" data-key="heroTagline">Agentic AI Support</p>
-        <h1 class="text-4xl md:text-5xl font-semibold leading-tight text-white" data-key="heroTitle">
-          Apptent saves 35% of abandoned carts thanks to psychology and AI..
-        </h1>
-        <p class="text-slate-300 text-lg max-w-2xl" data-key="heroDesc">
-          We blend personalization, intent-aware analytics, and bank-grade compliance to turn every customer conversation into a confident outcome.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="https://calendly.com/apptent/30min" target="_blank">
-  <button class="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-2xl hover:tracking-wide transition" data-key="primaryCta">
-    Start a Live Demo
-  </button>
-</a>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apptent AI - Recover 35% of Abandoned Carts with AI Voice Agents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: hsl(260, 87%, 3%);
+            --foreground: hsl(40, 6%, 95%);
+            --primary: hsl(121, 95%, 76%);
+            --primary-foreground: hsl(0, 0%, 5%);
+            --hero-heading: hsl(40, 10%, 96%);
+            --hero-sub: hsl(40, 6%, 82%);
+            --secondary: hsl(240, 4%, 16%);
+            --border: hsl(240, 4%, 20%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --gradient-start: hsl(260, 87%, 5%);
+            --gradient-end: hsl(260, 87%, 8%);
+        }
 
-          <button class="border border-slate-600 text-slate-200 px-6 py-3 rounded-full hover:border-white transition" data-key="secondaryCta">View Personalization Flow</button>
-        </div>
-        <div class="grid grid-cols-3 gap-6 text-center">
-          <div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--foreground);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.01);
+            background-blend-mode: luminosity;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: none;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+            border-radius: 1rem;
+        }
+
+        .liquid-glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1.4px;
+            background: linear-gradient(180deg,
+                rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+                rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+                rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(8, 8, 8, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.75rem 2rem;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, hsl(121, 80%, 50%) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--primary-foreground);
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--hero-heading);
+            letter-spacing: -0.025em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--foreground);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            opacity: 0.85;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: 0.75rem;
+            padding: 0.625rem 1.25rem;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px hsla(121, 95%, 76%, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--foreground);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 6rem;
+            padding-bottom: 4rem;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(135, 251, 137, 0.1);
+            border: 1px solid rgba(135, 251, 137, 0.2);
+            border-radius: 2rem;
+            padding: 0.5rem 1.25rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .hero-badge-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-heading {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--hero-heading);
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-heading span {
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .hero-subheading {
+            font-size: 1.25rem;
+            color: var(--hero-sub);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9375rem;
+            color: var(--foreground);
+            opacity: 0.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+      
+        .primary-cta {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: 9999px;
+            padding: 1rem 2rem;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .primary-cta:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px hsla(121, 95%, 76%, 0.3);
+        }
+
+        .secondary-cta {
+            color: var(--foreground);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            padding: 1rem 2rem;
+            font-size: 1.0625rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .secondary-cta:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Value Proposition Section */
+        .value-prop {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--hero-heading);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--hero-sub);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(135, 251, 137, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: linear-gradient(135deg, rgba(135, 251, 137, 0.2) 0%, rgba(135, 251, 137, 0.1) 100%);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .value-icon svg {
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+
+        .value-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--hero-heading);
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            color: var(--foreground);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(135, 251, 137, 0.1);
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            line-height: 1;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--hero-heading);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .service-description {
+            color: var(--foreground);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--foreground);
+            opacity: 0.8;
+            font-size: 0.9375rem;
+        }
+
+        .feature-check {
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            max-width: 500px;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--hero-heading);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-description {
+            color: var(--foreground);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .highlight-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(135, 251, 137, 0.1);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .highlight-text h4 {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--hero-heading);
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-text p {
+            font-size: 0.875rem;
+            color: var(--foreground);
+            opacity: 0.7;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(135, 251, 137, 0.05) 0%, rgba(135, 251, 137, 0.02) 100%);
+            border-radius: 1.5rem;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .about-visual-content {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .about-visual-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-visual-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .visual-stat {
+            text-align: center;
+        }
+
+        .visual-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .visual-stat-label {
+            font-size: 0.875rem;
+            color: var(--foreground);
+            opacity: 0.7;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, transparent 100%);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(135, 251, 137, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            text-align: left;
+            color: var(--foreground);
+            font-size: 1.0625rem;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 2rem;
+            color: var(--foreground);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            max-width: 500px;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--hero-heading);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .contact-description {
+            color: var(--foreground);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .contact-methods {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(135, 251, 137, 0.1);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .contact-text h4 {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--hero-heading);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-text p {
+            color: var(--foreground);
+            opacity: 0.7;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            color: var(--foreground);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(135, 251, 137, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px hsla(121, 95%, 76%, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-description {
+            color: var(--foreground);
+            opacity: 0.7;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .footer-links h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--hero-heading);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--foreground);
+            opacity: 0.7;
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--foreground);
+            opacity: 0.5;
+            font-size: 0.875rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--foreground);
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
             
-          </div>
-          <div>
-          
-          </div>
-          <div>
-           
-          </div>
-        </div>
-      </div>
-      <div class="glass-panel p-8 shadow-2xl relative overflow-hidden border border-white/10">
-        <div class="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-gradient-to-br from-cyan-400/50 to-sky-500/40 blur-3xl pulse-ring"></div>
-        <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Tone Console</p>
-        <h2 class="text-2xl text-white font-semibold mt-4" data-key="toneConsoleTitle">Personalization control</h2>
-        <p class="text-slate-300 text-sm mt-2" data-key="toneConsoleDesc">
-          Slide to adjust empathy and precision so Apptent maintains your brand cadence.
-        </p>
-        <div class="mt-6 bg-slate-900/70 p-5 rounded-2xl border border-white/5">
-          <div class="flex justify-between text-xs uppercase tracking-[0.4em] text-slate-400">
-            <span data-key="toneLabelTitle">Adaptability</span>
-            <span id="toneLabel" class="text-white font-semibold">Balanced</span>
-          </div>
-          <input id="toneSlider" type="range" min="0" max="100" value="50" class="w-full mt-4 accent-sky-400" />
-          <p id="toneDescription" class="text-slate-300 text-sm mt-4">
-            Blend warmth with clarity for consistent experiences.
-          </p>
-        </div>
-        <div class="flex items-center gap-3 mt-7">
-          <div class="w-12 h-12 rounded-2xl border border-slate-700 flex items-center justify-center bg-slate-900/60">
-            <span class="text-xs uppercase tracking-[0.3em] text-cyan-300">AI</span>
-          </div>
-          <div>
-            <p class="text-white font-semibold text-sm" data-key="toneFooterTitle">Directive intelligence</p>
-            <p class="text-slate-400 text-xs" data-key="toneFooterDesc">
-              Apptent cues contextual reminders before every send.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </header>
-  <main class="relative z-10 max-w-6xl mx-auto px-6 pb-16 space-y-20">
-    <section id="personalization" class="space-y-8">
-      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div class="space-y-3">
-          <p class="text-xs uppercase tracking-[0.4em] text-sky-400" data-key="personalizationTagline">Personalization Force</p>
-          <h3 class="text-3xl font-semibold text-white" data-key="personalizationTitle">Tailor every message</h3>
-          <p class="text-slate-300 max-w-3xl" data-key="personalizationDesc">
-            Tune tone, inject brand phrases, and preview how Apptent delivers each reply with clarity.
-          </p>
-        </div>
-        <button class="self-start bg-white text-slate-900 font-semibold px-5 py-3 rounded-full shadow-xl hover:scale-105 transition" data-key="personalizationCta">Customize communication</button>
-      </div>
-      <div class="grid gap-6 lg:grid-cols-3">
-        <div class="glass-panel p-6 border border-white/10 shadow-2xl transition-transform duration-300 hover:-translate-y-2">
-          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="personalizationCard1Title">Guided Style Library</p>
-          <h4 class="text-2xl font-semibold text-white mt-4" data-key="personalizationCard1Title">Guided Style Library</h4>
-          <p class="text-slate-300 text-sm mt-3" data-key="personalizationCard1Desc">
-            Preset and custom tones ensure consistency across channels while letting your brand voice resonate.
-          </p>
-          <div class="flex flex-wrap gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-slate-400 mt-6">
-            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard1Tag1">Secure</span>
-            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard1Tag2">Consistent</span>
-          </div>
-        </div>
-        <div class="glass-panel p-6 border border-white/10 shadow-2xl transition-transform duration-300 hover:-translate-y-2">
-          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="personalizationCard2Title">Adaptive Prompts</p>
-          <h4 class="text-2xl font-semibold text-white mt-4" data-key="personalizationCard2Title">Adaptive Prompts</h4>
-          <p class="text-slate-300 text-sm mt-3" data-key="personalizationCard2Desc">
-            AI cues remind reps about context, sentiment, and compliance before any send.
-          </p>
-          <div class="flex flex-wrap gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-slate-400 mt-6">
-            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard2Tag1">Real-time</span>
-            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard2Tag2">Insightful</span>
-          </div>
-        </div>
-        <div class="glass-panel p-6 border border-white/10 shadow-2xl transition-transform duration-300 hover:-translate-y-2">
-          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="personalizationCard3Title">Persona Memory</p>
-          <h4 class="text-2xl font-semibold text-white mt-4" data-key="personalizationCard3Title">Persona Memory</h4>
-          <p class="text-slate-300 text-sm mt-3" data-key="personalizationCard3Desc">
-            Accounts, preferences, and contact history shape responses that feel personal.
-          </p>
-          <div class="flex flex-wrap gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-slate-400 mt-6">
-            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard3Tag1">Personalized</span>
-            <span class="px-3 py-1 rounded-full border border-slate-700" data-key="personalizationCard3Tag2">Trusted</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="analysis" class="grid gap-8 lg:grid-cols-2">
-      <div class="glass-panel p-8 relative overflow-hidden border border-white/10 shadow-2xl">
-        <div class="absolute -top-10 right-8 w-24 h-24 rounded-full bg-gradient-to-br from-purple-500/50 to-blue-500/40 blur-3xl floaty"></div>
-        <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="analysisTagline">Recording Intelligence</p>
-        <h3 class="text-3xl font-semibold text-white mt-4" data-key="analysisTitle">Recording intelligence</h3>
-        <p class="text-slate-300 mt-4" data-key="analysisDesc">
-          Automatic transcripts, emotion tagging, and intent mapping feed back into every future exchange.
-        </p>
-        <div class="mt-8 space-y-6">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl border border-slate-600 flex items-center justify-center text-sky-300 font-semibold">01</div>
-            <div>
-              <p class="text-white font-semibold" data-key="analysisList1Title">Intent Mapping</p>
-              <p class="text-slate-400 text-sm" data-key="analysisList1Desc">
-                Segments conversations by goals so actions stay relevant.
-              </p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl border border-slate-600 flex items-center justify-center text-sky-300 font-semibold">02</div>
-            <div>
-              <p class="text-white font-semibold" data-key="analysisList2Title">Emotion Signals</p>
-              <p class="text-slate-400 text-sm" data-key="analysisList2Desc">
-                Detects tones to coach responses and route to expert agents.
-              </p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl border border-slate-600 flex items-center justify-center text-sky-300 font-semibold">03</div>
-            <div>
-              <p class="text-white font-semibold" data-key="analysisList3Title">Adaptive Coaching</p>
-              <p class="text-slate-400 text-sm" data-key="analysisList3Desc">
-                Summaries highlight opportunities, risks, and follow-ups.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="glass-panel p-8 border border-white/10 shadow-2xl">
-        <p class="text-xs uppercase tracking-[0.5em] text-slate-400" data-key="analysisDashboardTitle">Insight Dashboard</p>
-        <h3 class="text-3xl font-semibold text-white mt-4" data-key="dashboardHeading">Insight Dashboard</h3>
-        <div class="mt-6 rounded-3xl bg-slate-900/60 border border-white/10 p-6 space-y-6">
-          <div>
-            <div class="flex items-center justify-between text-sm text-slate-400">
-              <span data-key="dashboardLabel1">Agent Confidence</span>
-              <span class="text-white font-semibold text-lg" data-key="dashboardValue1">92%</span>
-            </div>
-            <div class="mt-2 h-2 bg-slate-800 rounded-full overflow-hidden">
-              <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="width: 92%;"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-center justify-between text-sm text-slate-400">
-              <span data-key="dashboardLabel2">Avg. Response Time</span>
-              <span class="text-white font-semibold text-lg" data-key="dashboardValue2">12s</span>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-center justify-between text-sm text-slate-400">
-              <span data-key="dashboardLabel3">Compliance Flags</span>
-              <span class="text-emerald-400 font-semibold text-lg" data-key="dashboardValue3">0.8%</span>
-            </div>
-          </div>
-          <p class="text-slate-400 text-sm" data-key="dashboardDesc">
-            Connect insights to CRM, contact center, and compliance tiers.
-          </p>
-        </div>
-      </div>
-    </section>
-    <section id="banking" class="space-y-8">
-      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div>
-          <p class="text-xs uppercase tracking-[0.4em] text-sky-400" data-key="bankTagline">Banking Flow</p>
-          <h3 class="text-3xl font-semibold text-white" data-key="bankTitle">Bank account journeys simplified</h3>
-          <p class="text-slate-300 max-w-3xl" data-key="bankDesc">
-            Apptent orchestrates identity checks, document assistance, and live support when opening a new account.
-          </p>
-        </div>
-        <a href="#contact" class="inline-flex items-center justify-center bg-emerald-400 text-slate-900 px-5 py-3 rounded-full font-semibold shadow-xl hover:bg-emerald-300 transition" data-key="bankPrimaryCta">See banking flow</a>
-      </div>
-      <div class="grid gap-6 md:grid-cols-3">
-        <div class="glass-panel p-6 border border-white/10 shadow-2xl">
-          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="bankStep1Title">Step 01</p>
-          <h4 class="text-2xl font-semibold text-white mt-3" data-key="bankStep1Headline">Establish the relationship</h4>
-          <p class="text-slate-300 text-sm mt-2" data-key="bankStep1Desc">
-            Warm greetings, disclosures, and identity verification happen smoothly.
-          </p>
-          <div class="text-slate-500 text-xs mt-4" data-key="bankStep1Foot">Checks: KYC onboarding, AML mapping</div>
-        </div>
-        <div class="glass-panel p-6 border border-white/10 shadow-2xl">
-          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="bankStep2Title">Step 02</p>
-          <h4 class="text-2xl font-semibold text-white mt-3" data-key="bankStep2Headline">Guide document submission</h4>
-          <p class="text-slate-300 text-sm mt-2" data-key="bankStep2Desc">
-            Smart prompts explain requirements, languages, and uploads.
-          </p>
-          <div class="text-slate-500 text-xs mt-4" data-key="bankStep2Foot">Includes multi-lingual clarifications</div>
-        </div>
-        <div class="glass-panel p-6 border border-white/10 shadow-2xl">
-          <p class="text-xs uppercase tracking-[0.4em] text-slate-400" data-key="bankStep3Title">Step 03</p>
-          <h4 class="text-2xl font-semibold text-white mt-3" data-key="bankStep3Headline">Confirm and empower</h4>
-          <p class="text-slate-300 text-sm mt-2" data-key="bankStep3Desc">
-            Next steps, alerts, and proactive follow-ups ensure satisfaction.
-          </p>
-          <div class="text-slate-500 text-xs mt-4" data-key="bankStep3Foot">Post onboarding follow-ups automated</div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer id="contact" class="relative z-10 max-w-6xl mx-auto px-6 pb-16">
-    <div class="glass-panel border border-white/10 shadow-2xl p-10 relative overflow-hidden">
-      <div class="absolute -bottom-10 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-pink-500/50 to-purple-500/40 blur-3xl opacity-70"></div>
-      <div class="relative z-10 grid gap-10 md:grid-cols-2">
-        <div class="space-y-3">
-          <p class="text-xs uppercase tracking-[0.4em] text-sky-300" data-key="contactTagline">Connect</p>
-          <h3 class="text-3xl font-semibold text-white" data-key="contactTitle">Ready to scale empathetic support?</h3>
-          <p class="text-slate-300 text-sm max-w-xl" data-key="contactDesc">
-            Book a walkthrough or pilot to see Apptent integrate with your support stack.
-          </p>
-        </div>
-        <div class="bg-slate-900/70 border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
-          <label class="text-[0.6rem] uppercase tracking-[0.3em] text-slate-400" data-key="contactLabelEmail">Email</label>
-          <input type="email" class="w-full bg-transparent border border-slate-700 rounded-2xl px-4 py-3 text-white focus:border-cyan-400 outline-none" placeholder="you@company.com" data-placeholder-key="contactPlaceholder" />
-          <label class="text-[0.6rem] uppercase tracking-[0.3em] text-slate-400 block" data-key="contactLabelNeed">Need</label>
-          <select class="w-full bg-transparent border border-slate-700 rounded-2xl px-4 py-3 text-white focus:border-cyan-400 outline-none">
-            <option data-option-key="contactOption1">Live demo</option>
-            <option data-option-key="contactOption2">Pilot onboarding</option>
-            <option data-option-key="contactOption3">Consultation</option>
-          </select>
-          <a href="https://calendly.com/apptent/30min" target="_blank">
-  <button class="w-full bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-3 rounded-2xl font-semibold text-white hover:scale-105 transition" data-key="contactButton">
-    Schedule a call
-  </button>
-</a>
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-visual {
+                height: 300px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
 
+        @media (max-width: 768px) {
+            .hero-heading {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-heading {
+                font-size: 2rem;
+            }
+            
+            .hero-subheading {
+                font-size: 1.0625rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .primary-cta, .secondary-cta {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 12L12 22L22 12L12 2Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                        <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="logo-text">APPTENT</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#value" class="nav-link">How It Works</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <a href="#contact" class="nav-cta">
+                Get Started
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
         </div>
-      </div>
-      <p class="text-[0.65rem] uppercase tracking-[0.3em] text-slate-500 text-center mt-8" data-key="footerNote">© 2025 Apptent. Built for ambitious support leaders.</p>
-    </div>
-  </footer>
-  <script>
-    const translations = {
-      en: {
-        navOverview: "Overview",
-        navPersonalization: "Personalization",
-        navAnalysis: "Recording Analysis",
-        navBanking: "Conversation Setup",
-        navContact: "Contact",
-        heroTagline: "Agentic AI Support",
-        heroTitle: "Apptent saves 35% of abandoned carts thanks to psychology and AI.",
-        heroDesc: "No more dead emails. We are introducing the era of “Emotional Commerce” in high ticket e-commerce. Within 2 minutes of cart abandonment we call, inquire and finalize the purchase. everything is done in a non-intrusive manner.",
-        primaryCta: "Start a Live Demo",
-        secondaryCta: "View Personalization Flow",
-        stat1Value: "18k",
-        stat1Label: "Minutes interpreted monthly",
-        stat2Value: "96%",
-        stat2Label: "Customer satisfaction rate",
-        stat3Value: "264",
-        stat3Label: "New accounts guided",
-        toneConsoleTitle: "Personalization control",
-        toneConsoleDesc: "Slide to adjust empathy and precision so Apptent maintains your brand cadence.",
-        toneLabelTitle: "Adaptability",
-        toneFooterTitle: "Directive intelligence",
-        toneFooterDesc: "Apptent cues contextual reminders before every send.",
-        personalizationTagline: "Personalization Force",
-        personalizationTitle: "Tailor every message",
-        personalizationDesc: "Tune tone, inject brand phrases, and preview how Apptent delivers each reply with clarity.",
-        personalizationCta: "Customize communication",
-        personalizationCard1Title: "Guided Style Library",
-        personalizationCard1Desc: "Preset and custom tones ensure consistency across channels while letting your brand voice resonate.",
-        personalizationCard1Tag1: "Secure",
-        personalizationCard1Tag2: "Consistent",
-        personalizationCard2Title: "Adaptive Prompts",
-        personalizationCard2Desc: "AI cues remind reps about context, sentiment, and compliance before any send.",
-        personalizationCard2Tag1: "Real-time",
-        personalizationCard2Tag2: "Insightful",
-        personalizationCard3Title: "Multilingual",
-        personalizationCard3Desc: "Answers questions in 20+ languages.",
-        personalizationCard3Tag1: "Personalized",
-        personalizationCard3Tag2: "Trusted",
-        analysisTagline: "Recording Intelligence",
-        analysisTitle: "Recording intelligence",
-        analysisDesc: "Automatic transcripts, emotion tagging, and intent mapping feed back into every future exchange.",
-        analysisList1Title: "Intent Mapping",
-        analysisList1Desc: "Segments conversations by goals so actions stay relevant.",
-        analysisList2Title: "Emotion Signals",
-        analysisList2Desc: "Detects tones to coach responses.",
-        analysisList3Title: "Adaptive Coaching",
-        analysisList3Desc: "Summaries highlight opportunities, risks, and follow-ups.",
-        analysisDashboardTitle: "Insight Dashboard",
-        dashboardHeading: "Insight Dashboard",
-        dashboardLabel1: "Agent Confidence",
-        dashboardValue1: "92%",
-        dashboardLabel2: "Avg. Response Time",
-        dashboardValue2: "0,7s",
-        dashboardLabel3: "Compliance Flags",
-        dashboardValue3: "0.8%",
-        dashboardDesc: "Connect insights to CRM, contact center, and compliance tiers.",
-        bankTagline: "Conversation Flow",
-        bankTitle: "Competition is 20% behind us",
-        bankDesc: "while e-mail marketing can get you 10%-15%, we average 35%.",
-        bankPrimaryCta: "See conversation flow",
-        bankStep1Title: "Step 1",
-        bankStep1Headline: "Establish the relationship",
-        bankStep1Desc: "Warm greetings, disclosures, and identity verification happen smoothly.",
-        bankStep1Foot: "Checks: KYC onboarding, AML mapping",
-        bankStep2Title: "Step 2",
-        bankStep2Headline: "Inquire",
-        bankStep2Desc: "Find out why purchase wasn't finalized.",
-        bankStep2Foot: "Includes multi-lingual clarifications",
-        bankStep3Title: "Step 3",
-        bankStep3Headline: "Confirm and empower",
-        bankStep3Desc: "Guide them through and help to finalize the proccess.",
-        bankStep3Foot: "Post onboarding follow-ups automated(if needed)",
-        contactTagline: "Connect",
-        contactTitle: "Ready to scale empathetic support?",
-        contactDesc: "Book a walkthrough or pilot to see Apptent integrate with your support stack.",
-        contactLabelEmail: "Email",
-        contactPlaceholder: "you@company.com",
-        contactLabelNeed: "Need",
-        contactOption1: "Live demo",
-        contactOption2: "Pilot onboarding",
-        contactOption3: "Consultation",
-        contactButton: "Schedule a call",
-        footerNote: "© 2025 Apptent. Built for ambitious support leaders."
-      },
-      pl: {
-        navOverview: "Przegląd",
-        navPersonalization: "Personalizacja",
-        navAnalysis: "Analiza nagrań",
-        navBanking: "Rozmowa",
-        navContact: "Kontakt",
-        heroTagline: "Wsparcie Agentic AI",
-        heroTitle: "Apptent finalizuje 35% porzuconych koszyków dzięki psychologii i sztucznej inteligencji.",
-        heroDesc: "Koniec z martwymi e-mailami. Wprowadzamy erę „handlu emocjonalnego” w segmencie e-commerce. W ciągu 2 minut od porzucenia koszyka dzwonimy, pytamy i finalizujemy zakup. Wszystko odbywa się w sposób nieinwazyjny.",
-        primaryCta: "Rozpocznij demo na żywo",
-        secondaryCta: "Zobacz personalizację",
-        stat1Value: "18k",
-        stat1Label: "Przeanalizowanych minut miesięcznie",
-        stat2Value: "96%",
-        stat2Label: "Wskaźnik zadowolenia klientów",
-        stat3Value: "264",
-        stat3Label: "Obsłużonych kont",
-        toneConsoleTitle: "Kontrola personalizacji",
-        toneConsoleDesc: "Przesuń, aby dopasować empatię i precyzję, utrzymując cadence marki.",
-        toneLabelTitle: "Adaptacyjność",
-        toneFooterTitle: "Inteligencja dyrektywna",
-        toneFooterDesc: "Apptent przypomina o kontekście przed każdą wysyłką.",
-        personalizationTagline: "Moc personalizacji",
-        personalizationTitle: "Dopasuj każdą wiadomość",
-        personalizationDesc: "Reguluj ton, dodawaj brandowe zwroty i sprawdzaj, jak Apptent odpowiada z jasnością.",
-        personalizationCta: "Dostosuj komunikację",
-        personalizationCard1Title: "Biblioteka stylów",
-        personalizationCard1Desc: "Gotowe i indywidualne tony zachowują spójność, a głos marki pozostaje autentyczny.",
-        personalizationCard1Tag1: "Bezpieczne",
-        personalizationCard1Tag2: "Spójne",
-        personalizationCard2Title: "Adaptacyjne podpowiedzi",
-        personalizationCard2Desc: "AI przypomina o kontekście, nastroju i wymaganiach regulacyjnych przed wysłaniem wiadomości.",
-        personalizationCard2Tag1: "W czasie rzeczywistym",
-        personalizationCard2Tag2: "Pogłębiające",
-        personalizationCard3Title: "Agent wielojęzykowy",
-        personalizationCard3Desc: "Obsługuje klientów w ponad 20 językach.",
-        personalizationCard3Tag1: "Spersonalizowane",
-        personalizationCard3Tag2: "Godne zaufania",
-        analysisTagline: "Inteligencja nagrań",
-        analysisTitle: "Inteligencja nagrań",
-        analysisDesc: "Automatyczne transkrypcje, oznaczanie emocji i mapowanie intencji wzmacniają przyszłe rozmowy.",
-        analysisList1Title: "Mapowanie intencji",
-        analysisList1Desc: "Klasyfikuje cele rozmów, by działania były trafne.",
-        analysisList2Title: "Sygnały emocji",
-        analysisList2Desc: "Wykrywa nastrój, by ulepszać odpowiedzi i odpowiadać z coraz wyższą precyzją.",
-        analysisList3Title: "Adaptacyjne wsparcie",
-        analysisList3Desc: "Podsumowania pokazują szanse, ryzyka i dalsze kroki.",
-        analysisDashboardTitle: "Panel wglądu",
-        dashboardHeading: "Panel wglądu",
-        dashboardLabel1: "Pewność agenta",
-        dashboardValue1: "92%",
-        dashboardLabel2: "Śr. czas odpowiedzi",
-        dashboardValue2: "0,7s",
-        dashboardLabel3: "Flagi zgodności",
-        dashboardValue3: "0,8%",
-        dashboardDesc: "Połącz dane z CRM.",
-        bankTagline: "Przepływ rozmowy",
-        bankTitle: "Uproszczone procesy otwarcia konta",
-        bankDesc: "Apptent koordynuje weryfikację, pomoc przy dokumentach i wsparcie na żywo w procesie zakładania konta.",
-        bankPrimaryCta: "Zobacz przepływ rozmowy",
-        bankStep1Title: "Krok 1",
-        bankStep1Headline: "Nawiąż relację",
-        bankStep1Desc: "Powitania, ujawnienia i weryfikacja tożsamości przeprowadzane płynnie.",
-        bankStep1Foot: "Kontrole: onboarding KYC, mapowanie AML",
-        bankStep2Title: "Krok 2",
-        bankStep2Headline: "Zapytaj",
-        bankStep2Desc: "Dowiedz się, dlaczego klient nie dokonał zakupu.",
-        bankStep2Foot: "Obejmuje wielojęzyczne wyjaśnienia",
-        bankStep3Title: "Krok 3",
-        bankStep3Headline: "Dopilnuj",
-        bankStep3Desc: "Przeprowadź klienta przez proces finalizacji zamówienia i płatności.",
-        bankStep3Foot: "Automatyzacja follow-upów po onboardingu(jeżeli potrzebne)",
-        contactTagline: "Połącz się",
-        contactTitle: "Gotowy na skalowanie empatycznego wsparcia?",
-        contactDesc: "Umów prezentację lub pilotaż, aby zobaczyć, jak Apptent integruje się z Twoim zespołem.",
-        contactLabelEmail: "Email",
-        contactPlaceholder: "ty@firma.pl",
-        contactLabelNeed: "Potrzeba",
-        contactOption1: "Demo na żywo",
-        contactOption2: "Pilotaż wdrożeniowy",
-        contactOption3: "Konsultacja",
-        contactButton: "Umów rozmowę",
-        footerNote: "© 2025 Apptent. Stworzone dla liderów wsparcia."
-      }
-    };
-    const toneMapping = {
-      en: [
-        { label: "Empathetic", description: "Soften language to comfort customers during delicate issues." },
-        { label: "Balanced", description: "Blend warmth with clarity for consistent experiences." },
-        { label: "Precise", description: "Sharpen directives for efficient banking workflows." }
-      ],
-      pl: [
-        { label: "Empatyczny", description: "Zmiękcz język, by uspokoić klientów w delikatnych sprawach." },
-        { label: "Zrównoważony", description: "Łączy ciepło z przejrzystością dla spójności." },
-        { label: "Precyzyjny", description: "Wyostrza instrukcje dla efektywnych procedur bankowych." }
-      ]
-    };
-    let currentLanguage = 'en';
-    const translationElements = document.querySelectorAll('[data-key]');
-    const placeholderElements = document.querySelectorAll('[data-placeholder-key]');
-    const optionElements = document.querySelectorAll('[data-option-key]');
-    const languageButtons = document.querySelectorAll('.language-pill');
-    const toneLabel = document.getElementById('toneLabel');
-    const toneDescription = document.getElementById('toneDescription');
-    const toneSlider = document.getElementById('toneSlider');
-    function applyLanguage(lang) {
-      translationElements.forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (translations[lang][key]) {
-          el.textContent = translations[lang][key];
-        }
-      });
-      placeholderElements.forEach(el => {
-        const key = el.getAttribute('data-placeholder-key');
-        if (translations[lang][key]) {
-          el.placeholder = translations[lang][key];
-        }
-      });
-      optionElements.forEach(el => {
-        const key = el.getAttribute('data-option-key');
-        if (translations[lang][key]) {
-          el.textContent = translations[lang][key];
-        }
-      });
-      updateToneText(lang, toneSlider.value);
-      languageButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-      });
-      currentLanguage = lang;
-    }
-    function updateToneText(lang, value) {
-      const numeric = Number(value);
-      let idx = 1;
-      if (numeric < 35) idx = 0;
-      else if (numeric > 65) idx = 2;
-      const text = toneMapping[lang][idx];
-      toneLabel.textContent = text.label;
-      toneDescription.textContent = text.description;
-    }
-    toneSlider.addEventListener('input', (e) => {
-      updateToneText(currentLanguage, e.target.value);
-    });
-    languageButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const targetLang = button.getAttribute('data-lang');
-        if (targetLang !== currentLanguage) {
-          applyLanguage(targetLang);
-        }
-      });
-    });
-    window.addEventListener('DOMContentLoaded', () => {
-      applyLanguage('en');
-    });
-  </script>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260309_042944_4a2205b7-b061-490a-852b-92d9e9955ce9.mp4" type="video/mp4">
+        </video>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                AI-Powered Recovery Solution
+            </div>
+            
+            <h1 class="hero-heading">
+                Recover <span>35%</span> of Abandoned Carts<br>
+                with AI Voice Agents
+            </h1>
+            
+            <p class="hero-subheading">
+                Our intelligent AI voice agents call your customers, answer their questions in real-time, and guide them through checkout—recovering lost revenue automatically.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">35%</div>
+                    <div class="stat-label">Recovery Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">AI Availability</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5min</div>
+                    <div class="stat-label">Setup Time</div>
+                </div>
+            </div>
+            
+            <div class="hero-cta">
+                <a href="#contact" class="primary-cta">
+                    Start Recovering Carts
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#value" class="secondary-cta">
+                    See How It Works
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section class="value-prop" id="value">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Why APPTENT</div>
+                <h2 class="section-title">Transform Abandoned Carts into Revenue</h2>
+                <p class="section-description">
+                    Our AI doesn't just remind customers about their carts—it engages them in natural conversation, addresses concerns, and guides them to complete their purchase.
+                </p>
+            </div>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Natural Voice Conversations</h3>
+                    <p class="value-description">
+                        Our AI agents speak naturally, understand customer concerns, and provide personalized assistance—just like your best sales associate.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Seamless Integration</h3>
+                    <p class="value-description">
+                        Connect with Shopify, WooCommerce, Magento, or any custom platform in minutes. No coding required—just plug and play.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Real-Time Analytics</h3>
+                    <p class="value-description">
+                        Track recovery rates, customer sentiment, and ROI in real-time. Understand what's working and optimize continuously.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Our Solutions</div>
+                <h2 class="section-title">Complete Cart Recovery Ecosystem</h2>
+                <p class="section-description">
+                    More than just calls—we provide a complete system to recover abandoned carts and increase customer lifetime value.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3 class="service-title">AI Voice Agent Calls</h3>
+                    <p class="service-description">
+                        Intelligent AI agents call customers within minutes of cart abandonment, engaging in natural conversation to address concerns and complete sales.
+                    </p>
+                    <ul class="service-features">
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            Natural language understanding
+                        </li>
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            Personalized product recommendations
+                        </li>
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            Real-time inventory checks
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <h3 class="service-title">Smart Follow-Up System</h3>
+                    <p class="service-description">
+                        Automated multi-channel follow-ups via SMS and email with personalized incentives when voice calls aren't answered.
+                    </p>
+                    <ul class="service-features">
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            Intelligent timing algorithms
+                        </li>
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            Personalized discount offers
+                        </li>
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            A/B testing capabilities
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3 class="service-title">Performance Analytics</h3>
+                    <p class="service-description">
+                        Comprehensive dashboard showing recovery rates, customer sentiment analysis, and ROI calculations to optimize your strategy.
+                    </p>
+                    <ul class="service-features">
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            Real-time recovery tracking
+                        </li>
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            Customer sentiment analysis
+                        </li>
+                        <li>
+                            <span class="feature-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            ROI and revenue reports
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-subtitle">About APPTENT</div>
+                    <h2 class="about-title">We're Solving E-commerce's Biggest Problem</h2>
+                    <p class="about-description">
+                        Founded in 2024, Apptent was born from a simple observation: e-commerce businesses lose billions to cart abandonment every year, and traditional recovery methods only recover a fraction of that.
+                    </p>
+                    <p class="about-description">
+                        We pioneered AI voice agents specifically designed for cart recovery—combining natural language processing, real-time inventory integration, and behavioral psychology to create conversations that convert.
+                    </p>
+                  </p class="about-description">
+              Since then, we won multiple awards rewarding both our unicorn worthy idea, great team and world class innovative product.
+              </p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="highlight-text">
+                                <h4>Privacy First</h4>
+                                <p>GDPR compliant, SOC 2 certified</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                            </div>
+                            <div class="highlight-text">
+                                <h4>Global Reach</h4>
+                                <p>Available in 50+ countries</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <div class="highlight-text">
+                                <h4>Dedicated Support</h4>
+                                <p>24/7 customer success team</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="highlight-text">
+                                <h4>Proven Results</h4>
+                                <p>35% average recovery rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="about-visual-content">
+                        <h3 class="about-visual-title">Our Impact in Numbers</h3>
+                        <div class="about-visual-stats">
+                            <div class="visual-stat">
+                                <div class="visual-stat-value">35%+</div>
+                                <div class="visual-stat-label">Revenue Recovered</div>
+                            </div>
+                            <div class="visual-stat">
+                                <div class="visual-stat-value">20+</div>
+                                <div class="visual-stat-label">Languages</div>
+                            </div>
+                            <div class="visual-stat">
+                                <div class="visual-stat-value">800k+</div>
+                                <div class="visual-stat-label">Calls Made</div>
+                            </div>
+                            <div class="visual-stat">
+                                <div class="visual-stat-value">4.9/5</div>
+                                <div class="visual-stat-label">Customer Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">FAQ</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">
+                    Everything you need to know about CartVoice AI and how it can transform your cart recovery.
+                </p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does the AI voice agent sound?
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        Our AI agents use state-of-the-art voice synthesis that sounds natural and human-like. They can adjust tone, pacing, and empathy based on the customer's responses. Most customers can't tell they're speaking with an AI until they're told.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How quickly does it call abandoned carts?
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        We setup our models to call within 2-5 minutes of cart abandonment. This timing is based on extensive testing showing that immediate follow-up has the highest conversion rate while still giving customers time to potentially complete the purchase on their own. However, this may vary according to the client's requirements. 
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What if customers don't answer?
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        If calls aren't answered, our system automatically sends personalized SMS and email follow-ups with special incentives. We use intelligent timing and A/B testing to maximize response rates across all channels.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is it compliant with telemarketing laws?
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        Yes, fully compliant. We automatically honor Do Not Call lists, provide opt-out options in every call, and comply with TCPA, GDPR, and other regional regulations. We also maintain proper call records and consent documentation.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How long does setup take?
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        Most customers are up and running within 5-10 minutes. Our one-click integrations with major e-commerce platforms make setup simple. For custom platforms, our API documentation is comprehensive, and our support team can assist with implementation.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What's your pricing model?
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        We offer simple, performance-based pricing: a small percentage of recovered revenue. No setup fees, no monthly minimums. You only pay when we recover carts for you. This aligns our success directly with yours.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-subtitle">Get in Touch</div>
+                    <h2 class="contact-title">Ready to Recover Your Lost Revenue?</h2>
+                    <p class="contact-description">
+                        Schedule a demo or start your free trial today. Our team will show you how CartVoice AI can recover 35% of your abandoned carts automatically.
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Call Us</h4>
+                                <p>+1 (917) 261-3181</p> <p>+48 733 996 057</p>
+                              
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email Us</h4>
+                                <p>antoni@apptent.pl</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="Your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="you@company.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Company Name</label>
+                            <input type="text" class="form-input" placeholder="Your company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-input form-textarea" placeholder="Tell us about your cart abandonment challenges..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            Send Message
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 0.5rem;">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/apptent/30min" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 12L12 22L22 12L12 2Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <span class="logo-text">Apptent</span>
+                    </a>
+                    <p class="footer-description">
+                        Recovering abandoned carts with AI voice agents. Transform lost revenue into growth with intelligent, automated conversations.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>&copy; 2026 Apptent AI. All rights reserved.</div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simple validation
+            const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#ff6b6b';
+                } else {
+                    input.style.borderColor = '';
+                }
+            });
+            
+            if (isValid) {
+                // Simulate form submission
+                const submitBtn = contactForm.querySelector('.form-submit');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = 'Sending...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = 'Message Sent!';
+                    submitBtn.style.backgroundColor = 'var(--primary)';
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.backgroundColor = '';
+                        contactForm.reset();
+                    }, 2000);
+                }, 1500);
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.backgroundColor = 'rgba(8, 8, 8, 0.95)';
+            navLinks.style.padding = '1.5rem 2rem';
+            navLinks.style.gap = '1.5rem';
+            navLinks.style.backdropFilter = 'blur(10px)';
+            navLinks.style.webkitBackdropFilter = 'blur(10px)';
+            navLinks.style.borderTop = '1px solid var(--border)';
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.value-card, .service-card, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Pause video when not in viewport
+        const heroVideo = document.querySelector('.hero-video');
+        const heroSection = document.querySelector('.hero');
+        
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    heroVideo.play().catch(e => console.log('Autoplay prevented:', e));
+                } else {
+                    heroVideo.pause();
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        videoObserver.observe(heroSection);
+    </script>
 </body>
 </html>
