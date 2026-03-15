@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apptent AI - Recover 35% of Abandoned Carts with AI Voice Agents</title>
+    <title>Apptent AI - Odzyskaj 35% Porzuconych Koszyków z AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
@@ -46,34 +45,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
-        }
-
-        .liquid-glass {
-            background: rgba(255, 255, 255, 0.01);
-            background-blend-mode: luminosity;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: none;
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-            position: relative;
-            border-radius: 1rem;
-        }
-
-        .liquid-glass::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            padding: 1.4px;
-            background: linear-gradient(180deg,
-                rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
-                rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
-                rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            border-radius: inherit;
-            pointer-events: none;
         }
 
         /* Navbar */
@@ -151,6 +122,35 @@
             opacity: 1;
             color: var(--primary);
         }
+        
+        /* Opcje wyboru języka */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-right: 1.5rem;
+            margin-left: auto;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.05);
+            color: var(--foreground);
+            border: 1px solid var(--border);
+            border-radius: 0.4rem;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            opacity: 0.7;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            opacity: 1;
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(135, 251, 137, 0.1);
+        }
 
         .nav-cta {
             background-color: var(--primary);
@@ -181,6 +181,7 @@
             color: var(--foreground);
             cursor: pointer;
             padding: 0.5rem;
+            margin-left: 1rem;
         }
 
         /* Hero Section */
@@ -296,7 +297,7 @@
             gap: 1rem;
             flex-wrap: wrap;
         }
-      
+       
         .primary-cta {
             background-color: var(--primary);
             color: var(--primary-foreground);
@@ -913,25 +914,25 @@
             .nav-links {
                 display: none;
             }
-            
+           
             .mobile-menu-btn {
                 display: block;
             }
-            
+           
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
-            
+           
             .about-visual {
                 height: 300px;
             }
-            
+           
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
-            
+           
             .footer-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
@@ -942,31 +943,31 @@
             .hero-heading {
                 font-size: 2.5rem;
             }
-            
+           
             .hero-stats {
                 gap: 2rem;
             }
-            
+           
             .stat-value {
                 font-size: 2rem;
             }
-            
+           
             .section-title {
                 font-size: 2rem;
             }
-            
+           
             .services-grid {
                 grid-template-columns: 1fr;
             }
-            
+           
             .about-highlights {
                 grid-template-columns: 1fr;
             }
-            
+           
             .footer-content {
                 grid-template-columns: 1fr;
             }
-            
+           
             .footer-bottom {
                 flex-direction: column;
                 gap: 1rem;
@@ -978,21 +979,21 @@
             .hero-heading {
                 font-size: 2rem;
             }
-            
+           
             .hero-subheading {
                 font-size: 1.0625rem;
             }
-            
+           
             .hero-stats {
                 flex-direction: column;
                 gap: 1.5rem;
             }
-            
+           
             .primary-cta, .secondary-cta {
                 width: 100%;
                 justify-content: center;
             }
-            
+           
             .hero-cta {
                 flex-direction: column;
             }
@@ -1000,7 +1001,6 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
             <a href="#" class="logo">
@@ -1013,22 +1013,27 @@
                 </div>
                 <span class="logo-text">APPTENT</span>
             </a>
-            
+           
             <div class="nav-links">
-                <a href="#value" class="nav-link">How It Works</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#value" class="nav-link" data-i18n="nav_how">Jak to działa</a>
+                <a href="#services" class="nav-link" data-i18n="nav_services">Usługi</a>
+                <a href="#about" class="nav-link" data-i18n="nav_about">O nas</a>
+                <a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a>
+                <a href="#contact" class="nav-link" data-i18n="nav_contact">Kontakt</a>
             </div>
-            
+
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="setLang('pl')">PL</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+           
             <a href="#contact" class="nav-cta">
-                Get Started
+                <span data-i18n="nav_cta">Rozpocznij</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </a>
-            
+           
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -1039,51 +1044,49 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <video class="hero-video" autoplay loop muted playsinline>
             <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260309_042944_4a2205b7-b061-490a-852b-92d9e9955ce9.mp4" type="video/mp4">
         </video>
-        
+       
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="hero-badge-dot"></span>
-                AI-Powered Recovery Solution
+                <span data-i18n="hero_badge">Rozwiązanie oparte na sztucznej inteligencji</span>
             </div>
-            
-            <h1 class="hero-heading">
-                Recover <span>35%</span> of Abandoned Carts<br>
-                with AI Voice Agents
+           
+            <h1 class="hero-heading" data-i18n="hero_heading">
+                Odzyskaj <span>35%</span> Porzuconych Koszyków<br>dzięki Agentom Głosowym AI
             </h1>
-            
-            <p class="hero-subheading">
-                Our intelligent AI voice agents call your customers, answer their questions in real-time, and guide them through checkout—recovering lost revenue automatically.
+           
+            <p class="hero-subheading" data-i18n="hero_subheading">
+                Nasi inteligentni agenci głosowi AI dzwonią do Twoich klientów, odpowiadają na ich pytania w czasie rzeczywistym i przeprowadzają przez proces zakupu — automatycznie odzyskując utracone przychody.
             </p>
-            
+           
             <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-value">35%</div>
-                    <div class="stat-label">Recovery Rate</div>
+                    <div class="stat-label" data-i18n="stat_recovery">Skuteczność Odzyskiwania</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value">24/7</div>
-                    <div class="stat-label">AI Availability</div>
+                    <div class="stat-label" data-i18n="stat_ai">Dostępność AI</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value">5min</div>
-                    <div class="stat-label">Setup Time</div>
+                    <div class="stat-label" data-i18n="stat_setup">Czas Wdrożenia</div>
                 </div>
             </div>
-            
+           
             <div class="hero-cta">
                 <a href="#contact" class="primary-cta">
-                    Start Recovering Carts
+                    <span data-i18n="hero_cta_primary">Zacznij Odzyskiwać Koszyki</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
                 <a href="#value" class="secondary-cta">
-                    See How It Works
+                    <span data-i18n="hero_cta_secondary">Zobacz Jak To Działa</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polygon points="10 8 16 12 10 16 10 8"></polygon>
@@ -1093,17 +1096,16 @@
         </div>
     </section>
 
-    <!-- Value Proposition Section -->
     <section class="value-prop" id="value">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle">Why APPTENT</div>
-                <h2 class="section-title">Transform Abandoned Carts into Revenue</h2>
-                <p class="section-description">
-                    Our AI doesn't just remind customers about their carts—it engages them in natural conversation, addresses concerns, and guides them to complete their purchase.
+                <div class="section-subtitle" data-i18n="val_subtitle">Dlaczego APPTENT</div>
+                <h2 class="section-title" data-i18n="val_title">Zmień Porzucone Koszyki w Przychód</h2>
+                <p class="section-description" data-i18n="val_desc">
+                    Nasze AI nie tylko przypomina o koszykach — prowadzi naturalne rozmowy, rozwiewa wątpliwości i pomaga dokończyć zakup.
                 </p>
             </div>
-            
+           
             <div class="value-grid">
                 <div class="value-card">
                     <div class="value-icon">
@@ -1111,12 +1113,12 @@
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
                     </div>
-                    <h3 class="value-title">Natural Voice Conversations</h3>
-                    <p class="value-description">
-                        Our AI agents speak naturally, understand customer concerns, and provide personalized assistance—just like your best sales associate.
+                    <h3 class="value-title" data-i18n="val_card1_title">Naturalne Rozmowy Głosowe</h3>
+                    <p class="value-description" data-i18n="val_card1_desc">
+                        Nasi agenci AI mówią naturalnie, rozumieją obawy klientów i zapewniają spersonalizowaną pomoc — zupełnie jak Twój najlepszy sprzedawca.
                     </p>
                 </div>
-                
+               
                 <div class="value-card">
                     <div class="value-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1125,12 +1127,12 @@
                             <line x1="9" y1="21" x2="9" y2="9"></line>
                         </svg>
                     </div>
-                    <h3 class="value-title">Seamless Integration</h3>
-                    <p class="value-description">
-                        Connect with Shopify, WooCommerce, Magento, or any custom platform in minutes. No coding required—just plug and play.
+                    <h3 class="value-title" data-i18n="val_card2_title">Bezproblemowa Integracja</h3>
+                    <p class="value-description" data-i18n="val_card2_desc">
+                        Zintegruj system z Shopify, WooCommerce, Magento lub inną platformą w kilka minut. Nie wymaga kodowania — po prostu podłącz i działaj.
                     </p>
                 </div>
-                
+               
                 <div class="value-card">
                     <div class="value-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1139,32 +1141,31 @@
                             <line x1="6" y1="20" x2="6" y2="16"></line>
                         </svg>
                     </div>
-                    <h3 class="value-title">Real-Time Analytics</h3>
-                    <p class="value-description">
-                        Track recovery rates, customer sentiment, and ROI in real-time. Understand what's working and optimize continuously.
+                    <h3 class="value-title" data-i18n="val_card3_title">Analityka na Żywo</h3>
+                    <p class="value-description" data-i18n="val_card3_desc">
+                        Śledź skuteczność odzyskiwania koszyków, nastroje klientów i zwrot z inwestycji (ROI) w czasie rzeczywistym. Analizuj i optymalizuj.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle">Our Solutions</div>
-                <h2 class="section-title">Complete Cart Recovery Ecosystem</h2>
-                <p class="section-description">
-                    More than just calls—we provide a complete system to recover abandoned carts and increase customer lifetime value.
+                <div class="section-subtitle" data-i18n="ser_subtitle">Nasze Rozwiązania</div>
+                <h2 class="section-title" data-i18n="ser_title">Kompletny Ekosystem Odzyskiwania</h2>
+                <p class="section-description" data-i18n="ser_desc">
+                    To coś więcej niż tylko połączenia — zapewniamy pełny system pozwalający na powrót klientów i zwiększenie ich wartości dla firmy.
                 </p>
             </div>
-            
+           
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-number">01</div>
-                    <h3 class="service-title">AI Voice Agent Calls</h3>
-                    <p class="service-description">
-                        Intelligent AI agents call customers within minutes of cart abandonment, engaging in natural conversation to address concerns and complete sales.
+                    <h3 class="service-title" data-i18n="ser_card1_title">Połączenia od AI</h3>
+                    <p class="service-description" data-i18n="ser_card1_desc">
+                        Inteligentni agenci wykonują połączenia zaraz po porzuceniu koszyka, aby naturalnie wyjaśnić wątpliwości i domknąć sprzedaż.
                     </p>
                     <ul class="service-features">
                         <li>
@@ -1173,7 +1174,7 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            Natural language understanding
+                            <span data-i18n="ser_card1_f1">Zrozumienie naturalnego języka</span>
                         </li>
                         <li>
                             <span class="feature-check">
@@ -1181,7 +1182,7 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            Personalized product recommendations
+                            <span data-i18n="ser_card1_f2">Spersonalizowane rekomendacje</span>
                         </li>
                         <li>
                             <span class="feature-check">
@@ -1189,16 +1190,16 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            Real-time inventory checks
+                            <span data-i18n="ser_card1_f3">Weryfikacja zapasów w czasie rzeczywistym</span>
                         </li>
                     </ul>
                 </div>
-                
+               
                 <div class="service-card">
                     <div class="service-number">02</div>
-                    <h3 class="service-title">Smart Follow-Up System</h3>
-                    <p class="service-description">
-                        Automated multi-channel follow-ups via SMS and email with personalized incentives when voice calls aren't answered.
+                    <h3 class="service-title" data-i18n="ser_card2_title">Inteligentny System Follow-Up</h3>
+                    <p class="service-description" data-i18n="ser_card2_desc">
+                        Zautomatyzowane przypomnienia przez SMS i e-mail ze specjalnymi zachętami, gdy połączenie głosowe nie zostanie odebrane.
                     </p>
                     <ul class="service-features">
                         <li>
@@ -1207,7 +1208,7 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            Intelligent timing algorithms
+                            <span data-i18n="ser_card2_f1">Inteligentne algorytmy czasu</span>
                         </li>
                         <li>
                             <span class="feature-check">
@@ -1215,7 +1216,7 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            Personalized discount offers
+                            <span data-i18n="ser_card2_f2">Indywidualne oferty rabatowe</span>
                         </li>
                         <li>
                             <span class="feature-check">
@@ -1223,16 +1224,16 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            A/B testing capabilities
+                            <span data-i18n="ser_card2_f3">Możliwość testów A/B</span>
                         </li>
                     </ul>
                 </div>
-                
+               
                 <div class="service-card">
                     <div class="service-number">03</div>
-                    <h3 class="service-title">Performance Analytics</h3>
-                    <p class="service-description">
-                        Comprehensive dashboard showing recovery rates, customer sentiment analysis, and ROI calculations to optimize your strategy.
+                    <h3 class="service-title" data-i18n="ser_card3_title">Analiza Wyników</h3>
+                    <p class="service-description" data-i18n="ser_card3_desc">
+                        Rozbudowany panel pokazujący skuteczność działań, analizę opinii klientów oraz zwrot z inwestycji dla lepszej strategii.
                     </p>
                     <ul class="service-features">
                         <li>
@@ -1241,7 +1242,7 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            Real-time recovery tracking
+                            <span data-i18n="ser_card3_f1">Monitorowanie w czasie rzeczywistym</span>
                         </li>
                         <li>
                             <span class="feature-check">
@@ -1249,7 +1250,7 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            Customer sentiment analysis
+                            <span data-i18n="ser_card3_f2">Analiza satysfakcji klienta</span>
                         </li>
                         <li>
                             <span class="feature-check">
@@ -1257,7 +1258,7 @@
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </span>
-                            ROI and revenue reports
+                            <span data-i18n="ser_card3_f3">Raporty o przychodach i ROI</span>
                         </li>
                     </ul>
                 </div>
@@ -1265,23 +1266,22 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <div class="section-subtitle">About APPTENT</div>
-                    <h2 class="about-title">We're Solving E-commerce's Biggest Problem</h2>
-                    <p class="about-description">
-                        Founded in 2024, Apptent was born from a simple observation: e-commerce businesses lose billions to cart abandonment every year, and traditional recovery methods only recover a fraction of that.
+                    <div class="section-subtitle" data-i18n="abt_subtitle">O APPTENT</div>
+                    <h2 class="about-title" data-i18n="abt_title">Rozwiązujemy Największy Problem E-commerce</h2>
+                    <p class="about-description" data-i18n="abt_desc1">
+                        Założona w 2024 roku, firma Apptent zrodziła się z prostej obserwacji: firmy e-commerce tracą co roku miliardy na porzuconych koszykach, a tradycyjne metody ratują tylko znikomą ich część.
                     </p>
-                    <p class="about-description">
-                        We pioneered AI voice agents specifically designed for cart recovery—combining natural language processing, real-time inventory integration, and behavioral psychology to create conversations that convert.
+                    <p class="about-description" data-i18n="abt_desc2">
+                        Wprowadziliśmy na rynek innowacyjne boty głosowe AI zaprojektowane specjalnie w celu domykania transakcji. Łącząc zaawansowane przetwarzanie języka, wiedzę o magazynie i psychologię klienta – tworzymy rozmowy, które konwertują.
                     </p>
-                  </p class="about-description">
-              Since then, we won multiple awards rewarding both our unicorn worthy idea, great team and world class innovative product.
-              </p>
-                    
+                    <p class="about-description" data-i18n="abt_desc3">
+                        Od tego czasu zdobyliśmy liczne nagrody doceniające nasz pomysł klasy "unicorn", wspaniały zespół i światowej klasy, innowacyjny produkt.
+                    </p>
+                   
                     <div class="about-highlights">
                         <div class="highlight-item">
                             <div class="highlight-icon">
@@ -1290,11 +1290,11 @@
                                 </svg>
                             </div>
                             <div class="highlight-text">
-                                <h4>Privacy First</h4>
-                                <p>GDPR compliant, SOC 2 certified</p>
+                                <h4 data-i18n="abt_hl1_title">Prywatność Przede Wszystkim</h4>
+                                <p data-i18n="abt_hl1_desc">Zgodne z RODO i SOC 2</p>
                             </div>
                         </div>
-                        
+                       
                         <div class="highlight-item">
                             <div class="highlight-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1304,11 +1304,11 @@
                                 </svg>
                             </div>
                             <div class="highlight-text">
-                                <h4>Global Reach</h4>
-                                <p>Available in 50+ countries</p>
+                                <h4 data-i18n="abt_hl2_title">Globalny Zasięg</h4>
+                                <p data-i18n="abt_hl2_desc">Dostępne w ponad 50 krajach</p>
                             </div>
                         </div>
-                        
+                       
                         <div class="highlight-item">
                             <div class="highlight-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1319,11 +1319,11 @@
                                 </svg>
                             </div>
                             <div class="highlight-text">
-                                <h4>Dedicated Support</h4>
-                                <p>24/7 customer success team</p>
+                                <h4 data-i18n="abt_hl3_title">Dedykowane Wsparcie</h4>
+                                <p data-i18n="abt_hl3_desc">Zespół wsparcia 24/7</p>
                             </div>
                         </div>
-                        
+                       
                         <div class="highlight-item">
                             <div class="highlight-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1331,32 +1331,32 @@
                                 </svg>
                             </div>
                             <div class="highlight-text">
-                                <h4>Proven Results</h4>
-                                <p>35% average recovery rate</p>
+                                <h4 data-i18n="abt_hl4_title">Potwierdzone Wyniki</h4>
+                                <p data-i18n="abt_hl4_desc">Średnia skuteczność 35%</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+               
                 <div class="about-visual">
                     <div class="about-visual-content">
-                        <h3 class="about-visual-title">Our Impact in Numbers</h3>
+                        <h3 class="about-visual-title" data-i18n="abt_vis_title">Nasz Wpływ w Liczbach</h3>
                         <div class="about-visual-stats">
                             <div class="visual-stat">
                                 <div class="visual-stat-value">35%+</div>
-                                <div class="visual-stat-label">Revenue Recovered</div>
+                                <div class="visual-stat-label" data-i18n="abt_vis_l1">Odzyskany Przychód</div>
                             </div>
                             <div class="visual-stat">
                                 <div class="visual-stat-value">20+</div>
-                                <div class="visual-stat-label">Languages</div>
+                                <div class="visual-stat-label" data-i18n="abt_vis_l2">Języków</div>
                             </div>
                             <div class="visual-stat">
                                 <div class="visual-stat-value">800k+</div>
-                                <div class="visual-stat-label">Calls Made</div>
+                                <div class="visual-stat-label" data-i18n="abt_vis_l3">Połączeń Wykonanych</div>
                             </div>
                             <div class="visual-stat">
                                 <div class="visual-stat-value">4.9/5</div>
-                                <div class="visual-stat-label">Customer Rating</div>
+                                <div class="visual-stat-label" data-i18n="abt_vis_l4">Ocena Klientów</div>
                             </div>
                         </div>
                     </div>
@@ -1365,104 +1365,102 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section class="faq" id="faq">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle">FAQ</div>
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-description">
-                    Everything you need to know about CartVoice AI and how it can transform your cart recovery.
+                <div class="section-subtitle" data-i18n="faq_subtitle">FAQ</div>
+                <h2 class="section-title" data-i18n="faq_title">Najczęściej Zadawane Pytania</h2>
+                <p class="section-description" data-i18n="faq_desc">
+                    Wszystko, co musisz wiedzieć o agencie głosowym AI i tym, jak zoptymalizuje Twoją sprzedaż.
                 </p>
             </div>
-            
+           
             <div class="faq-grid">
                 <div class="faq-item">
                     <button class="faq-question">
-                        How does the AI voice agent sound?
+                        <span data-i18n="faq_q1">Jak brzmi agent głosowy AI?</span>
                         <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
-                    <div class="faq-answer">
-                        Our AI agents use state-of-the-art voice synthesis that sounds natural and human-like. They can adjust tone, pacing, and empathy based on the customer's responses. Most customers can't tell they're speaking with an AI until they're told.
+                    <div class="faq-answer" data-i18n="faq_a1">
+                        Nasi agenci korzystają z najnowocześniejszej syntezy głosu, która brzmi bardzo ludzko i naturalnie. Potrafią dostosowywać swój ton, tempo mówienia oraz empatię do reakcji klienta. Większość rozmówców nie zdaje sobie sprawy, że rozmawia z maszyną.
                     </div>
                 </div>
-                
+               
                 <div class="faq-item">
                     <button class="faq-question">
-                        How quickly does it call abandoned carts?
+                        <span data-i18n="faq_q2">Jak szybko dzwonimy po porzuceniu koszyka?</span>
                         <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
-                    <div class="faq-answer">
-                        We setup our models to call within 2-5 minutes of cart abandonment. This timing is based on extensive testing showing that immediate follow-up has the highest conversion rate while still giving customers time to potentially complete the purchase on their own. However, this may vary according to the client's requirements. 
+                    <div class="faq-answer" data-i18n="faq_a2">
+                        Konfigurujemy modele tak, by dzwoniły w ciągu 2-5 minut od porzucenia koszyka. Nasze testy dowodzą, że natychmiastowe działanie daje najwyższą konwersję. Oczywiście ten czas możemy łatwo dostosować do Twoich wymogów.
                     </div>
                 </div>
-                
+               
                 <div class="faq-item">
                     <button class="faq-question">
-                        What if customers don't answer?
+                        <span data-i18n="faq_q3">Co, jeśli klient nie odbierze?</span>
                         <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
-                    <div class="faq-answer">
-                        If calls aren't answered, our system automatically sends personalized SMS and email follow-ups with special incentives. We use intelligent timing and A/B testing to maximize response rates across all channels.
+                    <div class="faq-answer" data-i18n="faq_a3">
+                        Gdy połączenie nie zostaje odebrane, system wysyła automatyczne wiadomości SMS i e-maile zawierające dedykowane, unikalne oferty, stosując testy A/B i algorytmy określające najlepszy moment kontaktu.
                     </div>
                 </div>
-                
+               
                 <div class="faq-item">
                     <button class="faq-question">
-                        Is it compliant with telemarketing laws?
+                        <span data-i18n="faq_q4">Czy rozwiązanie jest zgodne z przepisami telekomunikacyjnymi?</span>
                         <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
-                    <div class="faq-answer">
-                        Yes, fully compliant. We automatically honor Do Not Call lists, provide opt-out options in every call, and comply with TCPA, GDPR, and other regional regulations. We also maintain proper call records and consent documentation.
+                    <div class="faq-answer" data-i18n="faq_a4">
+                        Tak, jesteśmy w pełni zgodni z obowiązującym prawem, m.in. z dyrektywami RODO (GDPR) oraz listami "Do Not Call". Rejestrujemy zgody i dajemy możliwość łatwej rezygnacji w trakcie rozmowy.
                     </div>
                 </div>
-                
+               
                 <div class="faq-item">
                     <button class="faq-question">
-                        How long does setup take?
+                        <span data-i18n="faq_q5">Ile czasu zajmuje wdrożenie?</span>
                         <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
-                    <div class="faq-answer">
-                        Most customers are up and running within 5-10 minutes. Our one-click integrations with major e-commerce platforms make setup simple. For custom platforms, our API documentation is comprehensive, and our support team can assist with implementation.
+                    <div class="faq-answer" data-i18n="faq_a5">
+                        Dzięki gotowym integracjom konfiguracja dla popularnych systemów e-commerce trwa zazwyczaj 5 do 10 minut. Posiadamy też szerokie wsparcie dla customowych platform przez łatwe w użyciu API.
                     </div>
                 </div>
-                
+               
                 <div class="faq-item">
                     <button class="faq-question">
-                        What's your pricing model?
+                        <span data-i18n="faq_q6">Jaki jest model rozliczeń?</span>
                         <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
-                    <div class="faq-answer">
-                        We offer simple, performance-based pricing: a small percentage of recovered revenue. No setup fees, no monthly minimums. You only pay when we recover carts for you. This aligns our success directly with yours.
+                    <div class="faq-answer" data-i18n="faq_a6">
+                        Oferujemy prosty plan rozliczania w pełni oparty na wynikach – mały procent od ocalonego przychodu. Żadnych stałych abonamentów miesięcznych. Płacisz tylko wtedy, gdy My zarabiamy dla Ciebie.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <div class="section-subtitle">Get in Touch</div>
-                    <h2 class="contact-title">Ready to Recover Your Lost Revenue?</h2>
-                    <p class="contact-description">
-                        Schedule a demo or start your free trial today. Our team will show you how CartVoice AI can recover 35% of your abandoned carts automatically.
+                    <div class="section-subtitle" data-i18n="con_subtitle">Skontaktuj Się Z Nami</div>
+                    <h2 class="contact-title" data-i18n="con_title">Gotowy Odzyskać Swoje Przychody?</h2>
+                    <p class="contact-description" data-i18n="con_desc">
+                        Umów się na demo lub rozpocznij bezpłatny okres testowy. Nasz zespół pokaże Ci, jak w prosty sposób automatycznie odzyskiwać 35% porzuconych koszyków.
                     </p>
-                    
+                   
                     <div class="contact-methods">
                         <div class="contact-method">
                             <div class="contact-icon">
@@ -1471,12 +1469,11 @@
                                 </svg>
                             </div>
                             <div class="contact-text">
-                                <h4>Call Us</h4>
+                                <h4 data-i18n="con_l1">Zadzwoń do nas</h4>
                                 <p>+1 (917) 261-3181</p> <p>+48 733 996 057</p>
-                              
                             </div>
                         </div>
-                        
+                       
                         <div class="contact-method">
                             <div class="contact-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1485,41 +1482,37 @@
                                 </svg>
                             </div>
                             <div class="contact-text">
-                                <h4>Email Us</h4>
+                                <h4 data-i18n="con_l2">Napisz e-mail</h4>
                                 <p>antoni@apptent.pl</p>
                             </div>
                         </div>
-                        
-                        <div class="contact-method">
-                            
-                        </div>
                     </div>
                 </div>
-                
+               
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" class="form-input" placeholder="Your name" required>
+                            <label class="form-label" data-i18n="con_f1">Imię i Nazwisko</label>
+                            <input type="text" class="form-input" data-i18n-placeholder="con_f1_p" placeholder="Twoje imię i nazwisko" required>
                         </div>
-                        
+                       
                         <div class="form-group">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" class="form-input" placeholder="you@company.com" required>
+                            <label class="form-label" data-i18n="con_f2">Adres E-mail</label>
+                            <input type="email" class="form-input" data-i18n-placeholder="con_f2_p" placeholder="ty@firma.pl" required>
                         </div>
-                        
+                       
                         <div class="form-group">
-                            <label class="form-label">Company Name</label>
-                            <input type="text" class="form-input" placeholder="Your company">
+                            <label class="form-label" data-i18n="con_f3">Nazwa Firmy</label>
+                            <input type="text" class="form-input" data-i18n-placeholder="con_f3_p" placeholder="Twoja firma">
                         </div>
-                        
+                       
                         <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-input form-textarea" placeholder="Tell us about your cart abandonment challenges..."></textarea>
+                            <label class="form-label" data-i18n="con_f4">Wiadomość</label>
+                            <textarea class="form-input form-textarea" data-i18n-placeholder="con_f4_p" placeholder="Opowiedz nam o swoich wyzwaniach z porzuconymi koszykami..."></textarea>
                         </div>
-                        
+                       
                         <button type="submit" class="form-submit">
-                            Send Message
+                            <span data-i18n="con_btn">Wyślij Wiadomość</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 0.5rem;">
                                 <line x1="22" y1="2" x2="11" y2="13"></line>
                                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -1530,11 +1523,9 @@
             </div>
         </div>
     </section>
-<!-- Calendly inline widget begin -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/apptent/30min" style="min-width:320px;height:700px;"></div>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Calendly inline widget end -->
-    <!-- Footer -->
+
+    <div class="calendly-inline-widget" data-url="https://calendly.com/apptent/30min" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1549,44 +1540,44 @@
                         </div>
                         <span class="logo-text">Apptent</span>
                     </a>
-                    <p class="footer-description">
-                        Recovering abandoned carts with AI voice agents. Transform lost revenue into growth with intelligent, automated conversations.
+                    <p class="footer-description" data-i18n="foot_desc">
+                        Odzyskiwanie porzuconych koszyków dzięki agentom głosowym AI. Zamień straty w ogromny zysk poprzez automatyczne, inteligentne konwersacje.
                     </p>
                 </div>
-                
+               
                 <div class="footer-links">
-                    <h3>Product</h3>
+                    <h3 data-i18n="foot_t1">Produkt</h3>
                     <ul>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Integrations</a></li>
-                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#" data-i18n="foot_l1_1">Funkcje</a></li>
+                        <li><a href="#" data-i18n="foot_l1_2">Cennik</a></li>
+                        <li><a href="#" data-i18n="foot_l1_3">Integracje</a></li>
+                        <li><a href="#" data-i18n="foot_l1_4">Dokumentacja API</a></li>
                     </ul>
                 </div>
-                
+               
                 <div class="footer-links">
-                    <h3>Company</h3>
+                    <h3 data-i18n="foot_t2">Firma</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press</a></li>
+                        <li><a href="#" data-i18n="foot_l2_1">O nas</a></li>
+                        <li><a href="#" data-i18n="foot_l2_2">Kariera</a></li>
+                        <li><a href="#" data-i18n="foot_l2_3">Blog</a></li>
+                        <li><a href="#" data-i18n="foot_l2_4">Dla mediów</a></li>
                     </ul>
                 </div>
-                
+               
                 <div class="footer-links">
-                    <h3>Support</h3>
+                    <h3 data-i18n="foot_t3">Wsparcie</h3>
                     <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Status</a></li>
-                        <li><a href="#">Security</a></li>
+                        <li><a href="#" data-i18n="foot_l3_1">Centrum Pomocy</a></li>
+                        <li><a href="#" data-i18n="foot_l3_2">Kontakt</a></li>
+                        <li><a href="#" data-i18n="foot_l3_3">Status</a></li>
+                        <li><a href="#" data-i18n="foot_l3_4">Bezpieczeństwo</a></li>
                     </ul>
                 </div>
             </div>
-            
+           
             <div class="footer-bottom">
-                <div>&copy; 2026 Apptent AI. All rights reserved.</div>
+                <div data-i18n="foot_copy">&copy; 2026 Apptent AI. Wszelkie prawa zastrzeżone.</div>
                 <div class="footer-social">
                     <a href="#" class="social-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -1609,6 +1600,253 @@
     </footer>
 
     <script>
+        // System słownika i i18n
+        const translations = {
+            pl: {
+                title: "Apptent AI - Odzyskaj 35% Porzuconych Koszyków z AI",
+                nav_how: "Jak to działa",
+                nav_services: "Usługi",
+                nav_about: "O nas",
+                nav_faq: "FAQ",
+                nav_contact: "Kontakt",
+                nav_cta: "Rozpocznij",
+                hero_badge: "Rozwiązanie oparte na sztucznej inteligencji",
+                hero_heading: "Odzyskaj <span>35%</span> Porzuconych Koszyków<br>dzięki Agentom Głosowym AI",
+                hero_subheading: "Nasi inteligentni agenci głosowi AI dzwonią do Twoich klientów, odpowiadają na ich pytania w czasie rzeczywistym i przeprowadzają przez proces zakupu — automatycznie odzyskując utracone przychody.",
+                stat_recovery: "Skuteczność Odzyskiwania",
+                stat_ai: "Dostępność AI",
+                stat_setup: "Czas Wdrożenia",
+                hero_cta_primary: "Zacznij Odzyskiwać Koszyki",
+                hero_cta_secondary: "Zobacz Jak To Działa",
+                val_subtitle: "Dlaczego APPTENT",
+                val_title: "Zmień Porzucone Koszyki w Przychód",
+                val_desc: "Nasze AI nie tylko przypomina o koszykach — prowadzi naturalne rozmowy, rozwiewa wątpliwości i pomaga dokończyć zakup.",
+                val_card1_title: "Naturalne Rozmowy Głosowe",
+                val_card1_desc: "Nasi agenci AI mówią naturalnie, rozumieją obawy klientów i zapewniają spersonalizowaną pomoc — zupełnie jak Twój najlepszy sprzedawca.",
+                val_card2_title: "Bezproblemowa Integracja",
+                val_card2_desc: "Zintegruj system z Shopify, WooCommerce, Magento lub inną platformą w kilka minut. Nie wymaga kodowania — po prostu podłącz i działaj.",
+                val_card3_title: "Analityka na Żywo",
+                val_card3_desc: "Śledź skuteczność odzyskiwania koszyków, nastroje klientów i zwrot z inwestycji (ROI) w czasie rzeczywistym. Analizuj i optymalizuj.",
+                ser_subtitle: "Nasze Rozwiązania",
+                ser_title: "Kompletny Ekosystem Odzyskiwania",
+                ser_desc: "To coś więcej niż tylko połączenia — zapewniamy pełny system pozwalający na powrót klientów i zwiększenie ich wartości dla firmy.",
+                ser_card1_title: "Połączenia od AI",
+                ser_card1_desc: "Inteligentni agenci wykonują połączenia zaraz po porzuceniu koszyka, aby naturalnie wyjaśnić wątpliwości i domknąć sprzedaż.",
+                ser_card1_f1: "Zrozumienie naturalnego języka",
+                ser_card1_f2: "Spersonalizowane rekomendacje",
+                ser_card1_f3: "Weryfikacja zapasów w czasie rzeczywistym",
+                ser_card2_title: "Inteligentny System Follow-Up",
+                ser_card2_desc: "Zautomatyzowane przypomnienia przez SMS i e-mail ze specjalnymi zachętami, gdy połączenie głosowe nie zostanie odebrane.",
+                ser_card2_f1: "Inteligentne algorytmy czasu",
+                ser_card2_f2: "Indywidualne oferty rabatowe",
+                ser_card2_f3: "Możliwość testów A/B",
+                ser_card3_title: "Analiza Wyników",
+                ser_card3_desc: "Rozbudowany panel pokazujący skuteczność działań, analizę opinii klientów oraz zwrot z inwestycji dla lepszej strategii.",
+                ser_card3_f1: "Monitorowanie w czasie rzeczywistym",
+                ser_card3_f2: "Analiza satysfakcji klienta",
+                ser_card3_f3: "Raporty o przychodach i ROI",
+                abt_subtitle: "O APPTENT",
+                abt_title: "Rozwiązujemy Największy Problem E-commerce",
+                abt_desc1: "Założona w 2024 roku, firma Apptent zrodziła się z prostej obserwacji: firmy e-commerce tracą co roku miliardy na porzuconych koszykach, a tradycyjne metody ratują tylko znikomą ich część.",
+                abt_desc2: "Wprowadziliśmy na rynek innowacyjne boty głosowe AI zaprojektowane specjalnie w celu domykania transakcji. Łącząc zaawansowane przetwarzanie języka, wiedzę o magazynie i psychologię klienta – tworzymy rozmowy, które konwertują.",
+                abt_desc3: "Od tego czasu zdobyliśmy liczne nagrody doceniające nasz pomysł klasy \"unicorn\", wspaniały zespół i światowej klasy, innowacyjny produkt.",
+                abt_hl1_title: "Prywatność Przede Wszystkim",
+                abt_hl1_desc: "Zgodne z RODO i SOC 2",
+                abt_hl2_title: "Globalny Zasięg",
+                abt_hl2_desc: "Dostępne w ponad 50 krajach",
+                abt_hl3_title: "Dedykowane Wsparcie",
+                abt_hl3_desc: "Zespół wsparcia 24/7",
+                abt_hl4_title: "Potwierdzone Wyniki",
+                abt_hl4_desc: "Średnia skuteczność 35%",
+                abt_vis_title: "Nasz Wpływ w Liczbach",
+                abt_vis_l1: "Odzyskany Przychód",
+                abt_vis_l2: "Języków",
+                abt_vis_l3: "Połączeń Wykonanych",
+                abt_vis_l4: "Ocena Klientów",
+                faq_subtitle: "FAQ",
+                faq_title: "Najczęściej Zadawane Pytania",
+                faq_desc: "Wszystko, co musisz wiedzieć o agencie głosowym AI i tym, jak zoptymalizuje Twoją sprzedaż.",
+                faq_q1: "Jak brzmi agent głosowy AI?",
+                faq_a1: "Nasi agenci korzystają z najnowocześniejszej syntezy głosu, która brzmi bardzo ludzko i naturalnie. Potrafią dostosowywać swój ton, tempo mówienia oraz empatię do reakcji klienta. Większość rozmówców nie zdaje sobie sprawy, że rozmawia z maszyną.",
+                faq_q2: "Jak szybko dzwonimy po porzuceniu koszyka?",
+                faq_a2: "Konfigurujemy modele tak, by dzwoniły w ciągu 2-5 minut od porzucenia koszyka. Nasze testy dowodzą, że natychmiastowe działanie daje najwyższą konwersję. Oczywiście ten czas możemy łatwo dostosować do Twoich wymogów.",
+                faq_q3: "Co, jeśli klient nie odbierze?",
+                faq_a3: "Gdy połączenie nie zostaje odebrane, system wysyła automatyczne wiadomości SMS i e-maile zawierające dedykowane, unikalne oferty, stosując testy A/B i algorytmy określające najlepszy moment kontaktu.",
+                faq_q4: "Czy rozwiązanie jest zgodne z przepisami telekomunikacyjnymi?",
+                faq_a4: "Tak, jesteśmy w pełni zgodni z obowiązującym prawem, m.in. z dyrektywami RODO (GDPR) oraz listami \"Do Not Call\". Rejestrujemy zgody i dajemy możliwość łatwej rezygnacji w trakcie rozmowy.",
+                faq_q5: "Ile czasu zajmuje wdrożenie?",
+                faq_a5: "Dzięki gotowym integracjom konfiguracja dla popularnych systemów e-commerce trwa zazwyczaj 5 do 10 minut. Posiadamy też szerokie wsparcie dla customowych platform przez łatwe w użyciu API.",
+                faq_q6: "Jaki jest model rozliczeń?",
+                faq_a6: "Oferujemy prosty plan rozliczania w pełni oparty na wynikach – mały procent od ocalonego przychodu. Żadnych stałych abonamentów miesięcznych. Płacisz tylko wtedy, gdy My zarabiamy dla Ciebie.",
+                con_subtitle: "Skontaktuj Się Z Nami",
+                con_title: "Gotowy Odzyskać Swoje Przychody?",
+                con_desc: "Umów się na demo lub rozpocznij bezpłatny okres testowy. Nasz zespół pokaże Ci, jak w prosty sposób automatycznie odzyskiwać 35% porzuconych koszyków.",
+                con_l1: "Zadzwoń do nas",
+                con_l2: "Napisz e-mail",
+                con_f1: "Imię i Nazwisko",
+                con_f1_p: "Twoje imię i nazwisko",
+                con_f2: "Adres E-mail",
+                con_f2_p: "ty@firma.pl",
+                con_f3: "Nazwa Firmy",
+                con_f3_p: "Twoja firma",
+                con_f4: "Wiadomość",
+                con_f4_p: "Opowiedz nam o swoich wyzwaniach z porzuconymi koszykami...",
+                con_btn: "Wyślij Wiadomość",
+                foot_desc: "Odzyskiwanie porzuconych koszyków dzięki agentom głosowym AI. Zamień straty w ogromny zysk poprzez automatyczne, inteligentne konwersacje.",
+                foot_t1: "Produkt",
+                foot_l1_1: "Funkcje",
+                foot_l1_2: "Cennik",
+                foot_l1_3: "Integracje",
+                foot_l1_4: "Dokumentacja API",
+                foot_t2: "Firma",
+                foot_l2_1: "O nas",
+                foot_l2_2: "Kariera",
+                foot_l2_3: "Blog",
+                foot_l2_4: "Dla mediów",
+                foot_t3: "Wsparcie",
+                foot_l3_1: "Centrum Pomocy",
+                foot_l3_2: "Kontakt",
+                foot_l3_3: "Status",
+                foot_l3_4: "Bezpieczeństwo",
+                foot_copy: "&copy; 2026 Apptent AI. Wszelkie prawa zastrzeżone."
+            },
+            en: {
+                title: "Apptent AI - Recover 35% of Abandoned Carts with AI Voice Agents",
+                nav_how: "How It Works",
+                nav_services: "Services",
+                nav_about: "About",
+                nav_faq: "FAQ",
+                nav_contact: "Contact",
+                nav_cta: "Get Started",
+                hero_badge: "AI-Powered Recovery Solution",
+                hero_heading: "Recover <span>35%</span> of Abandoned Carts<br>with AI Voice Agents",
+                hero_subheading: "Our intelligent AI voice agents call your customers, answer their questions in real-time, and guide them through checkout—recovering lost revenue automatically.",
+                stat_recovery: "Recovery Rate",
+                stat_ai: "AI Availability",
+                stat_setup: "Setup Time",
+                hero_cta_primary: "Start Recovering Carts",
+                hero_cta_secondary: "See How It Works",
+                val_subtitle: "Why APPTENT",
+                val_title: "Transform Abandoned Carts into Revenue",
+                val_desc: "Our AI doesn't just remind customers about their carts—it engages them in natural conversation, addresses concerns, and guides them to complete their purchase.",
+                val_card1_title: "Natural Voice Conversations",
+                val_card1_desc: "Our AI agents speak naturally, understand customer concerns, and provide personalized assistance—just like your best sales associate.",
+                val_card2_title: "Seamless Integration",
+                val_card2_desc: "Connect with Shopify, WooCommerce, Magento, or any custom platform in minutes. No coding required—just plug and play.",
+                val_card3_title: "Real-Time Analytics",
+                val_card3_desc: "Track recovery rates, customer sentiment, and ROI in real-time. Understand what's working and optimize continuously.",
+                ser_subtitle: "Our Solutions",
+                ser_title: "Complete Cart Recovery Ecosystem",
+                ser_desc: "More than just calls—we provide a complete system to recover abandoned carts and increase customer lifetime value.",
+                ser_card1_title: "AI Voice Agent Calls",
+                ser_card1_desc: "Intelligent AI agents call customers within minutes of cart abandonment, engaging in natural conversation to address concerns and complete sales.",
+                ser_card1_f1: "Natural language understanding",
+                ser_card1_f2: "Personalized product recommendations",
+                ser_card1_f3: "Real-time inventory checks",
+                ser_card2_title: "Smart Follow-Up System",
+                ser_card2_desc: "Automated multi-channel follow-ups via SMS and email with personalized incentives when voice calls aren't answered.",
+                ser_card2_f1: "Intelligent timing algorithms",
+                ser_card2_f2: "Personalized discount offers",
+                ser_card2_f3: "A/B testing capabilities",
+                ser_card3_title: "Performance Analytics",
+                ser_card3_desc: "Comprehensive dashboard showing recovery rates, customer sentiment analysis, and ROI calculations to optimize your strategy.",
+                ser_card3_f1: "Real-time recovery tracking",
+                ser_card3_f2: "Customer sentiment analysis",
+                ser_card3_f3: "ROI and revenue reports",
+                abt_subtitle: "About APPTENT",
+                abt_title: "We're Solving E-commerce's Biggest Problem",
+                abt_desc1: "Founded in 2024, Apptent was born from a simple observation: e-commerce businesses lose billions to cart abandonment every year, and traditional recovery methods only recover a fraction of that.",
+                abt_desc2: "We pioneered AI voice agents specifically designed for cart recovery—combining natural language processing, real-time inventory integration, and behavioral psychology to create conversations that convert.",
+                abt_desc3: "Since then, we won multiple awards rewarding both our unicorn worthy idea, great team and world class innovative product.",
+                abt_hl1_title: "Privacy First",
+                abt_hl1_desc: "GDPR compliant, SOC 2 certified",
+                abt_hl2_title: "Global Reach",
+                abt_hl2_desc: "Available in 50+ countries",
+                abt_hl3_title: "Dedicated Support",
+                abt_hl3_desc: "24/7 customer success team",
+                abt_hl4_title: "Proven Results",
+                abt_hl4_desc: "35% average recovery rate",
+                abt_vis_title: "Our Impact in Numbers",
+                abt_vis_l1: "Revenue Recovered",
+                abt_vis_l2: "Languages",
+                abt_vis_l3: "Calls Made",
+                abt_vis_l4: "Customer Rating",
+                faq_subtitle: "FAQ",
+                faq_title: "Frequently Asked Questions",
+                faq_desc: "Everything you need to know about CartVoice AI and how it can transform your cart recovery.",
+                faq_q1: "How does the AI voice agent sound?",
+                faq_a1: "Our AI agents use state-of-the-art voice synthesis that sounds natural and human-like. They can adjust tone, pacing, and empathy based on the customer's responses. Most customers can't tell they're speaking with an AI until they're told.",
+                faq_q2: "How quickly does it call abandoned carts?",
+                faq_a2: "We setup our models to call within 2-5 minutes of cart abandonment. This timing is based on extensive testing showing that immediate follow-up has the highest conversion rate while still giving customers time to potentially complete the purchase on their own. However, this may vary according to the client's requirements.",
+                faq_q3: "What if customers don't answer?",
+                faq_a3: "If calls aren't answered, our system automatically sends personalized SMS and email follow-ups with special incentives. We use intelligent timing and A/B testing to maximize response rates across all channels.",
+                faq_q4: "Is it compliant with telemarketing laws?",
+                faq_a4: "Yes, fully compliant. We automatically honor Do Not Call lists, provide opt-out options in every call, and comply with TCPA, GDPR, and other regional regulations. We also maintain proper call records and consent documentation.",
+                faq_q5: "How long does setup take?",
+                faq_a5: "Most customers are up and running within 5-10 minutes. Our one-click integrations with major e-commerce platforms make setup simple. For custom platforms, our API documentation is comprehensive, and our support team can assist with implementation.",
+                faq_q6: "What's your pricing model?",
+                faq_a6: "We offer simple, performance-based pricing: a small percentage of recovered revenue. No setup fees, no monthly minimums. You only pay when we recover carts for you. This aligns our success directly with yours.",
+                con_subtitle: "Get in Touch",
+                con_title: "Ready to Recover Your Lost Revenue?",
+                con_desc: "Schedule a demo or start your free trial today. Our team will show you how CartVoice AI can recover 35% of your abandoned carts automatically.",
+                con_l1: "Call Us",
+                con_l2: "Email Us",
+                con_f1: "Full Name",
+                con_f1_p: "Your name",
+                con_f2: "Email Address",
+                con_f2_p: "you@company.com",
+                con_f3: "Company Name",
+                con_f3_p: "Your company",
+                con_f4: "Message",
+                con_f4_p: "Tell us about your cart abandonment challenges...",
+                con_btn: "Send Message",
+                foot_desc: "Recovering abandoned carts with AI voice agents. Transform lost revenue into growth with intelligent, automated conversations.",
+                foot_t1: "Product",
+                foot_l1_1: "Features",
+                foot_l1_2: "Pricing",
+                foot_l1_3: "Integrations",
+                foot_l1_4: "API Documentation",
+                foot_t2: "Company",
+                foot_l2_1: "About Us",
+                foot_l2_2: "Careers",
+                foot_l2_3: "Blog",
+                foot_l2_4: "Press",
+                foot_t3: "Support",
+                foot_l3_1: "Help Center",
+                foot_l3_2: "Contact Us",
+                foot_l3_3: "Status",
+                foot_l3_4: "Security",
+                foot_copy: "&copy; 2026 Apptent AI. All rights reserved."
+            }
+        };
+
+        function setLang(lang) {
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+            // Set Title
+            document.title = translations[lang]['title'];
+            document.documentElement.lang = lang;
+
+            // Replace HTML content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Replace placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if(translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+        }
+
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -1657,16 +1895,18 @@
             if (isValid) {
                 // Simulate form submission
                 const submitBtn = contactForm.querySelector('.form-submit');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = 'Sending...';
+                const originalContent = submitBtn.innerHTML;
+                const lang = document.documentElement.lang || 'pl';
+                
+                submitBtn.innerHTML = lang === 'pl' ? 'Wysyłanie...' : 'Sending...';
                 submitBtn.disabled = true;
                 
                 setTimeout(() => {
-                    submitBtn.innerHTML = 'Message Sent!';
+                    submitBtn.innerHTML = lang === 'pl' ? 'Wysłano!' : 'Message Sent!';
                     submitBtn.style.backgroundColor = 'var(--primary)';
                     
                     setTimeout(() => {
-                        submitBtn.innerHTML = originalText;
+                        submitBtn.innerHTML = originalContent;
                         submitBtn.disabled = false;
                         submitBtn.style.backgroundColor = '';
                         contactForm.reset();
